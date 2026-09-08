@@ -11,6 +11,22 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
 
+  /** Main storefront URL when admin runs on subdomain */
+  function siteBase() {
+    if (window.VUAMMO_SITE_ORIGIN) return String(window.VUAMMO_SITE_ORIGIN).replace(/\/$/, "");
+    const h = location.hostname || "";
+    if (h === "admin.vuammovn.pro") return "https://vuammovn.pro";
+    if (h === "admin.vuammo.com" || h.startsWith("admin.")) {
+      return "https://vuammovn.pro";
+    }
+    return "";
+  }
+  function siteUrl(path) {
+    const p = path.startsWith("/") ? path : "/" + path;
+    const base = siteBase();
+    return base ? base + p : p.replace(/^\//, "");
+  }
+
   const ORDER_LABELS = {
     all: "Tất cả",
     paid: "Đã thanh toán",
@@ -19,10 +35,16 @@
     released: "Hoàn tất",
     refunded: "Đã hoàn"
   };
+  const DISPUTE_LABELS = {
+    all: "Tất cả",
+    open: "Chờ xử lý",
+    resolved: "Đã hoàn",
+    rejected: "Từ chối KN"
+  };
   const TYPE_LABELS = {
     topup: "Nạp tiền",
     purchase: "Mua hàng",
-    refund: "Hoàn / trừ",
+    refund: "Hoàn tiền",
     release: "Giải ngân"
   };
 
@@ -193,14 +215,15 @@
       released: "ok",
       refunded: "pink",
       open: "warn",
-      resolved: "ok",
+      resolved: "pink",
       rejected: "bad"
     };
+    const label = DISPUTE_LABELS[st] || ORDER_LABELS[st] || st;
     return (
       '<span class="adm-tag ' +
       (map[st] || "") +
       '">' +
-      esc(ORDER_LABELS[st] || st) +
+      esc(label) +
       "</span>"
     );
   }
@@ -299,7 +322,9 @@
         '<div class="adm-login"><h1>Không có quyền admin</h1><p>Tài khoản ' +
         esc(user.email) +
         " chưa nằm trong ADMIN_EMAILS.</p>" +
-        '<a class="btn btn-outline" href="index.html">Về trang chủ</a></div>';
+        '<a class="btn btn-outline" href="' +
+        siteUrl("index.html") +
+        '">Về trang chủ</a></div>';
       return;
     }
     state.user = user;
@@ -343,7 +368,9 @@
       "<label>Email</label><input name=\"email\" type=\"email\" required>" +
       "<label>Mật khẩu</label><input name=\"password\" type=\"password\" required>" +
       '<div class="adm-actions"><button class="btn btn-primary" type="submit">Đăng nhập</button>' +
-      '<a class="btn btn-outline" href="tai-khoan.html">Tạo tài khoản</a></div>' +
+      '<a class="btn btn-outline" href="' +
+      siteUrl("tai-khoan.html") +
+      '">Tạo tài khoản</a></div>' +
       '<p class="adm-muted" id="admLoginErr"></p></form></div>'
     );
   }
@@ -401,7 +428,9 @@
       '<div class="adm-side-foot">' +
       esc(user.email) +
       '<br><button type="button" class="btn btn-ghost" id="admLogout" style="margin-top:8px">Đăng xuất</button>' +
-      '<br><a href="index.html">← Về website</a></div></aside>' +
+      '<br><a href="' +
+      siteUrl("index.html") +
+      '">← Về website</a></div></aside>' +
       '<div class="adm-main"><header class="adm-top"><div><h1 id="admTitle">Dashboard</h1>' +
       '<p id="admSub"></p></div><div class="adm-top-actions" id="admTopActions"></div></header>' +
       '<div class="adm-body" id="admBody"></div></div></div>'
@@ -537,7 +566,7 @@
       .join("");
 
     body.innerHTML =
-      '<div class="adm-hint">Đơn số giao tự động từ kho. Dùng <b>Hoàn tất</b> khi đã xong hold, <b>Huỷ / hoàn</b> khi cần refund thủ công.</div>' +
+      '<div class="adm-hint">Đơn số giao tự động từ kho. Dùng <b>Hoàn tất</b> khi hết hold, <b>Hoàn tiền</b> để trả ví khách.</div>' +
       '<div class="adm-pills" id="ordPills">' +
       pills +
       "</div>" +
@@ -587,17 +616,19 @@
             money(o.total) +
             "</b></td><td>" +
             statusTag(o.status) +
-            (o.dispute
+            (o.dispute && o.dispute.status === "open"
               ? '<div class="adm-tag bad" style="margin-top:4px">KN: ' +
                 esc(o.dispute.reason || "") +
                 "</div>"
-              : "") +
+              : o.dispute && o.dispute.status === "rejected" && o.status !== "refunded"
+                ? '<div class="adm-tag bad" style="margin-top:4px">Từ chối KN</div>'
+                : "") +
             "</td><td>" +
             fmtTime(o.createdAt) +
             '</td><td><div class="adm-row-actions">' +
             '<button type="button" class="btn btn-outline btn-sm js-detail">Chi tiết</button>' +
             (canCancel
-              ? '<button type="button" class="btn btn-danger btn-sm js-cancel">Huỷ / hoàn</button>'
+              ? '<button type="button" class="btn btn-danger btn-sm js-cancel">Hoàn tiền</button>'
               : "") +
             (canDone
               ? '<button type="button" class="btn btn-ok btn-sm js-done">Hoàn tất</button>'
@@ -657,13 +688,14 @@
     });
     body.querySelectorAll(".js-cancel").forEach((btn) => {
       btn.addEventListener("click", async () => {
-        if (!confirm("Đánh dấu đơn hoàn / refund?")) return;
+        if (!confirm("Hoàn tiền đơn này về ví khách?")) return;
         const id = btn.closest("tr").getAttribute("data-id");
-        await api("/admin/orders/" + id, {
+        const res = await api("/admin/orders/" + id, {
           method: "PATCH",
           body: JSON.stringify({ status: "refunded" })
         });
-        toast("Đã huỷ / hoàn đơn");
+        const amt = res && res.refundCents ? money(res.refundCents) : "";
+        toast(amt ? "Đã hoàn " + amt + " về ví khách" : "Đã hoàn tiền đơn");
         renderOrders(body);
       });
     });
@@ -699,19 +731,13 @@
     const c = data.counts || {};
     const pills = ["all", "open", "resolved", "rejected"]
       .map((st) => {
-        const labels = {
-          all: "Tất cả",
-          open: "Mới / mở",
-          resolved: "Đã xử lý",
-          rejected: "Từ chối"
-        };
         return (
           '<button type="button" class="adm-pill' +
           (f.status === st ? " active" : "") +
           '" data-st="' +
           st +
           '">' +
-          labels[st] +
+          DISPUTE_LABELS[st] +
           " (" +
           (c[st] || 0) +
           ")</button>"
@@ -719,6 +745,7 @@
       })
       .join("");
     body.innerHTML =
+      '<div class="adm-hint"><b>Hoàn tiền</b> → cộng ví khách + Đã hoàn. <b>Từ chối</b> → trạng thái Từ chối KN (không hoàn tiền).</div>' +
       '<div class="adm-pills" id="dpPills">' +
       pills +
       "</div>" +
@@ -728,7 +755,7 @@
       '">' +
       '<button type="button" class="btn btn-outline" id="dpRefresh">Làm mới</button></div></div>' +
       '<div class="adm-card"><div class="adm-table-wrap"><table class="adm-table"><thead><tr>' +
-      "<th>Đơn</th><th>Khách</th><th>Lý do</th><th>Tổng</th><th>TT KN</th><th>Ngày</th><th></th>" +
+      "<th>Đơn</th><th>Khách</th><th>Lý do</th><th>Tổng</th><th>Trạng thái</th><th>Ngày</th><th></th>" +
       "</tr></thead><tbody>" +
       ((data.disputes || []).length
         ? data.disputes
@@ -752,9 +779,9 @@
                 fmtTime(d.createdAt) +
                 '</td><td><div class="adm-row-actions">' +
                 (d.status === "open"
-                  ? '<button type="button" class="btn btn-ok btn-sm js-res">Đã xử lý</button>' +
+                  ? '<button type="button" class="btn btn-ok btn-sm js-res">Hoàn tiền</button>' +
                     '<button type="button" class="btn btn-danger btn-sm js-rej">Từ chối</button>'
-                  : "") +
+                  : "—") +
                 "</div></td></tr>"
             )
             .join("")
@@ -773,21 +800,24 @@
     });
     body.querySelectorAll(".js-res").forEach((btn) => {
       btn.addEventListener("click", async () => {
-        await api("/admin/disputes/" + btn.closest("tr").getAttribute("data-id"), {
+        if (!confirm("Hoàn tiền khiếu nại này về ví khách?")) return;
+        const res = await api("/admin/disputes/" + btn.closest("tr").getAttribute("data-id"), {
           method: "PATCH",
           body: JSON.stringify({ status: "resolved" })
         });
-        toast("Đã xử lý khiếu nại");
+        const amt = res && res.refundCents ? money(res.refundCents) : "";
+        toast(amt ? "Đã hoàn " + amt + " · trạng thái Đã hoàn" : "Đã hoàn tiền khiếu nại");
         renderDisputes(body);
       });
     });
     body.querySelectorAll(".js-rej").forEach((btn) => {
       btn.addEventListener("click", async () => {
+        if (!confirm("Từ chối khiếu nại? Trạng thái sẽ là Từ chối KN (không hoàn tiền).")) return;
         await api("/admin/disputes/" + btn.closest("tr").getAttribute("data-id"), {
           method: "PATCH",
           body: JSON.stringify({ status: "rejected" })
         });
-        toast("Đã từ chối khiếu nại");
+        toast("Đã từ chối KN");
         renderDisputes(body);
       });
     });
@@ -1033,7 +1063,9 @@
                   '<button type="button" class="btn btn-ghost btn-sm js-toggle-prod">' +
                   (active ? "Ẩn" : "Hiện") +
                   "</button>" +
-                  '<a class="btn btn-outline btn-sm" href="kho-hang.html">Kho</a></div></td></tr>'
+                  '<a class="btn btn-outline btn-sm" href="' +
+                  siteUrl("kho-hang.html") +
+                  '">Kho</a></div></td></tr>'
                 );
               })
               .join("")
@@ -1355,8 +1387,8 @@
                     : '<span class="adm-tag bad">Ẩn</span>') +
                   '</td><td><div class="adm-row-actions">' +
                   '<button type="button" class="btn btn-primary btn-sm js-edit">Chỉnh hồ sơ</button>' +
-                  '<a class="btn btn-outline btn-sm" target="_blank" href="shop.html?token=' +
-                  encodeURIComponent(s.token) +
+                  '<a class="btn btn-outline btn-sm" target="_blank" href="' +
+                  siteUrl((s.slug ? "/" + s.slug : "shop.html?token=" + encodeURIComponent(s.token))) +
                   '">Xem</a></div></td></tr>'
                 );
               })

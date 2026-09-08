@@ -10,13 +10,21 @@ function shopNameOf(p){
 
 function shopLinkOf(p){
   const name = shopNameOf(p);
-  if (p && p.sellerToken) return "shop.html?token=" + encodeURIComponent(p.sellerToken);
+  if (typeof shopByToken === "function" && p && p.sellerToken) {
+    const byTok = shopByToken(p.sellerToken);
+    if (byTok && typeof shopHref === "function") return shopHref(byTok);
+  }
   if (typeof shopByName === "function") {
     const s = shopByName(name);
     if (s && typeof shopHref === "function") return shopHref(s);
-    if (s) return "shop.html?token=" + encodeURIComponent(s.token);
+    if (s && s.slug) return "/" + s.slug;
   }
-  return "shop.html?slug=" + encodeURIComponent(String(p && p.sellerSlug || name).toLowerCase());
+  const slug = String((p && (p.sellerSlug || p.seller)) || name)
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return slug ? ("/" + slug) : "/shop.html";
 }
 
 function discountBadge(p){

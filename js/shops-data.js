@@ -3,7 +3,11 @@ const VUAMMO_SHOPS = [{"id":1,"name":"ngocdeal","slug":"ngocdeal","token":"4757d
 function shopByToken(token){ if(!token) return null; return VUAMMO_SHOPS.find(s => s.token === String(token)) || null; }
 function shopBySlug(slug){ if(!slug) return null; return VUAMMO_SHOPS.find(s => s.slug === String(slug)) || null; }
 function shopByName(name){ if(!name) return null; const n=String(name).trim().toLowerCase(); return VUAMMO_SHOPS.find(s => s.name.toLowerCase()===n) || null; }
-function shopHref(shop){ if(!shop) return 'shop.html'; return 'shop.html?token=' + encodeURIComponent(shop.token); }
+function shopHref(shop){
+  if (!shop) return "/shop.html";
+  const slug = shop.slug || String(shop.name || "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return slug ? ("/" + slug) : "/shop.html";
+}
 function shopAvatarUrl(shop){ if(!shop) return 'images/logo-vuammo.png'; return shop.avatar || ('images/shops/' + shop.slug + '.svg'); }
 function productsOfShop(shop){ if(!shop || typeof RAW_PRODUCTS === 'undefined') return []; return RAW_PRODUCTS.filter(p => p.sellerToken === shop.token || String(p.seller||'') === shop.name); }
 

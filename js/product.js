@@ -56,7 +56,17 @@ function sellerFor(p){
     const s = shopByName(p.seller);
     if (s) return Object.assign({}, s, { href: shopHref(s) });
   }
-  if(p.seller) return { name: String(p.seller), city: base.city, district: base.district, href: p.sellerToken ? ("shop.html?token=" + encodeURIComponent(p.sellerToken)) : null, slug: p.sellerSlug || null, token: p.sellerToken || null };
+  if (p.seller) {
+    const slug = p.sellerSlug || null;
+    return {
+      name: String(p.seller),
+      city: base.city,
+      district: base.district,
+      href: slug ? "/" + slug : null,
+      slug: slug,
+      token: p.sellerToken || null
+    };
+  }
   return base;
 }
 
@@ -503,7 +513,7 @@ document.getElementById("prodImage").src = product.image;
 document.getElementById("prodImage").alt = product.name;
 document.getElementById("prodTitle").textContent = product.name;
 (function fillProdMeta() {
-  const href = seller.href || (product.sellerToken ? ("shop.html?token=" + encodeURIComponent(product.sellerToken)) : null);
+  const href = seller.href || (seller.slug ? ("/" + seller.slug) : null);
   const sellerLabel = href
     ? ('Bán bởi <a class="product-meta-seller" href="' + esc(href) + '"><b>' + esc(shopName) + "</b></a>")
     : ("Bán bởi <b>" + esc(shopName) + "</b>");
@@ -554,7 +564,11 @@ function currentCartItem() {
     name,
     price,
     qty,
-    image: product.image || ""
+    image: product.image || "",
+    seller: product.seller || "",
+    sellerToken: product.sellerToken || "",
+    sellerSlug: product.sellerSlug || "",
+    parentId: String(product.id)
   };
 }
 document.getElementById("addToCartBtn").addEventListener("click", () => {
@@ -627,7 +641,7 @@ document.getElementById("relatedGrid").innerHTML =
     .map(productCard).join("");
 
 (function(){
-  const href = seller.href || (product.sellerToken ? ("shop.html?token=" + encodeURIComponent(product.sellerToken)) : null);
+  const href = seller.href || (seller.slug ? ("/" + seller.slug) : null);
   const avatar = sellerAvatar(seller);
   const room = seller.chatRoomId || ("shop_" + (seller.token || seller.slug || shopName));
   const level = sellerLevel(seller);

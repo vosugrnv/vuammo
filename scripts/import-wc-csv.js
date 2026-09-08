@@ -326,15 +326,10 @@ function productById(id){
 function productSeoPath(p){
   return \`/vi/tat-ca-san-pham/\${p.slug}-\${p.id}\`;
 }
-/** Clickable href — relative .html (works with file:// and localhost) */
+/** Clickable href — always root-absolute (needed with <base href> on SEO pages) */
 function productHref(p){
-  const file = \`\${p.slug}-\${p.id}.html\`;
-  try {
-    if(typeof location !== "undefined" && /\\/vi\\/tat-ca-san-pham\\//i.test(location.pathname + location.href)){
-      return file;
-    }
-  } catch(_){}
-  return \`vi/tat-ca-san-pham/\${file}\`;
+  if(!p) return "/tat-ca-san-pham.html";
+  return "/vi/tat-ca-san-pham/" + p.slug + "-" + p.id + ".html";
 }
 /** Resolve product from clean URL or ?slug= / ?id= */
 function resolveProductFromLocation(){

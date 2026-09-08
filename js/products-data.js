@@ -17,13 +17,8 @@ function productSeoPath(p){
 }
 /** Clickable href — relative .html (works with file:// and localhost) */
 function productHref(p){
-  const file = `${p.slug}-${p.id}.html`;
-  try {
-    if(typeof location !== "undefined" && /\/vi\/tat-ca-san-pham\//i.test(location.pathname + location.href)){
-      return file;
-    }
-  } catch(_){}
-  return `vi/tat-ca-san-pham/${file}`;
+  if(!p) return "/tat-ca-san-pham.html";
+  return "/vi/tat-ca-san-pham/" + p.slug + "-" + p.id + ".html";
 }
 /** Resolve product from clean URL or ?slug= / ?id= */
 function resolveProductFromLocation(){

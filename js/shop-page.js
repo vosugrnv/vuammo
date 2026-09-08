@@ -16,10 +16,51 @@
   function resolveShop() {
     const params = new URLSearchParams(location.search);
     const token = params.get("token");
-    const slug = params.get("slug");
+    const slugQ = params.get("slug");
     if (token && typeof shopByToken === "function") return shopByToken(token);
-    if (slug && typeof shopBySlug === "function") return shopBySlug(slug);
+    if (slugQ && typeof shopBySlug === "function") return shopBySlug(slugQ);
+
+    const path = String(location.pathname || "").replace(/\/+$/, "") || "/";
+    const m = path.match(/^\/([a-z0-9][a-z0-9-]{0,62})(?:\.html)?$/i);
+    if (m && typeof shopBySlug === "function") {
+      const key = m[1].toLowerCase();
+      const reserved = {
+        index: 1,
+        admin: 1,
+        cart: 1,
+        wishlist: 1,
+        blog: 1,
+        shop: 1,
+        product: 1,
+        api: 1,
+        uploads: 1,
+        images: 1,
+        css: 1,
+        js: 1,
+        vi: 1,
+        "gian-hang": 1,
+        "tai-khoan": 1,
+        "tin-nhan": 1,
+        "thanh-toan": 1,
+        "don-hang": 1,
+        "chia-se": 1,
+        "tat-ca-san-pham": 1,
+        "dang-ky-nguoi-ban": 1,
+        "lien-he": 1,
+        "gioi-thieu": 1
+      };
+      if (!reserved[key]) {
+        const s = shopBySlug(key);
+        if (s) return s;
+      }
+    }
     return null;
+  }
+
+  function prettyShopUrl(shop) {
+    if (!shop) return "/shop.html";
+    if (typeof shopHref === "function") return shopHref(shop);
+    return shop.slug ? "/" + shop.slug : "/shop.html";
   }
 
   function hashSeed(str) {
@@ -105,6 +146,13 @@
 
     if (missing) missing.hidden = true;
     if (layout) layout.hidden = false;
+
+    const pretty = prettyShopUrl(shop);
+    if (pretty && pretty !== location.pathname + location.search) {
+      try {
+        history.replaceState(null, "", pretty);
+      } catch (_) {}
+    }
 
     document.title = shop.name + " | Gian hàng Vua MMO";
     const crumb = document.getElementById("shopCrumbName");
