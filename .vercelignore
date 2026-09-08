@@ -1,0 +1,11 @@
+api/node_modules
+api/.env
+api/.env.*
+.git
+.claude
+.cursor
+node_modules
+**/*.tar.gz
+**/*.log
+.vercel
+TEMP*

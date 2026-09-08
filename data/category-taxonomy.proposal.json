@@ -1,0 +1,1538 @@
+{
+  "version": 2,
+  "status": "proposal",
+  "source": "js/products-data.js",
+  "products": 3874,
+  "coverage": {
+    "parents": 3,
+    "leaves": 157,
+    "missing": 0,
+    "missingList": []
+  },
+  "seoNotes": [
+    "Chỉ 3 parent SEO: tai-khoan-cong-cu-ai, game, khoa-hoc",
+    "URL: /tat-ca-san-pham.html?cat={parent|leaf-slug}",
+    "Title parent: {Parent} giá rẻ chính chủ | Vua MMO",
+    "Title leaf: Mua tài khoản {Brand} giá rẻ | Vua MMO",
+    "H1 parent khớp thương hiệu tìm kiếm: Tài khoản AI, Game Steam, Khóa học online",
+    "displayGroups chỉ để sắp sidebar/UX — không phải URL cha thêm"
+  ],
+  "mergesSuggested": [
+    {
+      "from": [
+        "ideogramAI"
+      ],
+      "to": "Ideogram AI"
+    },
+    {
+      "from": [
+        "Genspark",
+        "Genspark AI"
+      ],
+      "to": "Genspark AI"
+    },
+    {
+      "from": [
+        "Outlook",
+        "OutlookMaill"
+      ],
+      "to": "Outlook"
+    }
+  ],
+  "parents": [
+    {
+      "slug": "tai-khoan-cong-cu-ai",
+      "title": "Tài khoản & Công cụ AI",
+      "seoTitle": "Tài khoản & Công cụ AI giá rẻ",
+      "h1": "Tài khoản & Công cụ AI",
+      "note": "Acc phần mềm, AI, giải trí, VPN, MXH, email, bảo mật — mọi thứ không thuộc Game/Khóa học",
+      "children": [
+        {
+          "title": "Tài Khoản Khác",
+          "count": 368,
+          "slug": "tai-khoan-khac"
+        },
+        {
+          "title": "(Chưa gắn leaf)",
+          "count": 236,
+          "slug": "chua-gan-leaf"
+        },
+        {
+          "title": "Tăng tương tác",
+          "count": 157,
+          "slug": "tang-tuong-tac"
+        },
+        {
+          "title": "Capcut",
+          "count": 126,
+          "slug": "capcut"
+        },
+        {
+          "title": "Meitu",
+          "count": 79,
+          "slug": "meitu"
+        },
+        {
+          "title": "INSTAGRAM",
+          "count": 78,
+          "slug": "instagram"
+        },
+        {
+          "title": "Monica",
+          "count": 78,
+          "slug": "monica"
+        },
+        {
+          "title": "ChatGPT",
+          "count": 76,
+          "slug": "chatgpt"
+        },
+        {
+          "title": "Tiktok",
+          "count": 76,
+          "slug": "tiktok"
+        },
+        {
+          "title": "Spotify",
+          "count": 73,
+          "slug": "spotify"
+        },
+        {
+          "title": "Netflix",
+          "count": 72,
+          "slug": "netflix"
+        },
+        {
+          "title": "Heygen",
+          "count": 71,
+          "slug": "heygen"
+        },
+        {
+          "title": "Vbee",
+          "count": 71,
+          "slug": "vbee"
+        },
+        {
+          "title": "Youtube",
+          "count": 69,
+          "slug": "youtube"
+        },
+        {
+          "title": "Grok",
+          "count": 65,
+          "slug": "grok"
+        },
+        {
+          "title": "Proxy",
+          "count": 59,
+          "slug": "proxy"
+        },
+        {
+          "title": "Adobe",
+          "count": 57,
+          "slug": "adobe"
+        },
+        {
+          "title": "ExpressVPN",
+          "count": 57,
+          "slug": "expressvpn"
+        },
+        {
+          "title": "Copilot",
+          "count": 56,
+          "slug": "copilot"
+        },
+        {
+          "title": "Cursor",
+          "count": 55,
+          "slug": "cursor"
+        },
+        {
+          "title": "Midjourney",
+          "count": 55,
+          "slug": "midjourney"
+        },
+        {
+          "title": "Elevenlabs",
+          "count": 54,
+          "slug": "elevenlabs"
+        },
+        {
+          "title": "Nord VPN",
+          "count": 51,
+          "slug": "nord-vpn"
+        },
+        {
+          "title": "Runway",
+          "count": 48,
+          "slug": "runway"
+        },
+        {
+          "title": "FPT Play",
+          "count": 47,
+          "slug": "fpt-play"
+        },
+        {
+          "title": "Google Ultra Veo 3",
+          "count": 45,
+          "slug": "google-ultra-veo-3"
+        },
+        {
+          "title": "Gamma Pro",
+          "count": 44,
+          "slug": "gamma-pro"
+        },
+        {
+          "title": "Dịch Vụ Facebook",
+          "count": 42,
+          "slug": "dich-vu-facebook"
+        },
+        {
+          "title": "Canva",
+          "count": 40,
+          "slug": "canva"
+        },
+        {
+          "title": "Figma",
+          "count": 40,
+          "slug": "figma"
+        },
+        {
+          "title": "Galaxy Play",
+          "count": 40,
+          "slug": "galaxy-play"
+        },
+        {
+          "title": "Hailou",
+          "count": 40,
+          "slug": "hailou"
+        },
+        {
+          "title": "THREADS",
+          "count": 40,
+          "slug": "threads"
+        },
+        {
+          "title": "SketchUP",
+          "count": 38,
+          "slug": "sketchup"
+        },
+        {
+          "title": "Dịch vụ Telegram",
+          "count": 37,
+          "slug": "dich-vu-telegram"
+        },
+        {
+          "title": "Gemini",
+          "count": 35,
+          "slug": "gemini"
+        },
+        {
+          "title": "Google Drive",
+          "count": 35,
+          "slug": "google-drive"
+        },
+        {
+          "title": "Surfshark",
+          "count": 35,
+          "slug": "surfshark"
+        },
+        {
+          "title": "Claude",
+          "count": 34,
+          "slug": "claude"
+        },
+        {
+          "title": "Wink",
+          "count": 34,
+          "slug": "wink"
+        },
+        {
+          "title": "Suno",
+          "count": 33,
+          "slug": "suno"
+        },
+        {
+          "title": "Higgsfield AI",
+          "count": 31,
+          "slug": "higgsfield-ai"
+        },
+        {
+          "title": "Tradingview",
+          "count": 31,
+          "slug": "tradingview"
+        },
+        {
+          "title": "Key HMA",
+          "count": 30,
+          "slug": "key-hma"
+        },
+        {
+          "title": "Perplexity",
+          "count": 30,
+          "slug": "perplexity"
+        },
+        {
+          "title": "Vidu",
+          "count": 28,
+          "slug": "vidu"
+        },
+        {
+          "title": "Vieon",
+          "count": 28,
+          "slug": "vieon"
+        },
+        {
+          "title": "Leonardo AI",
+          "count": 27,
+          "slug": "leonardo-ai"
+        },
+        {
+          "title": "Nitro Discord",
+          "count": 27,
+          "slug": "nitro-discord"
+        },
+        {
+          "title": "Veed AI Pro",
+          "count": 27,
+          "slug": "veed-ai-pro"
+        },
+        {
+          "title": "Kling AI",
+          "count": 26,
+          "slug": "kling-ai"
+        },
+        {
+          "title": "Dịch Vụ Tiktok",
+          "count": 25,
+          "slug": "dich-vu-tiktok"
+        },
+        {
+          "title": "GPM Login",
+          "count": 25,
+          "slug": "gpm-login"
+        },
+        {
+          "title": "Manus AI",
+          "count": 25,
+          "slug": "manus-ai"
+        },
+        {
+          "title": "Diệt Virus",
+          "count": 24,
+          "slug": "diet-virus"
+        },
+        {
+          "title": "Group Facebook",
+          "count": 24,
+          "slug": "group-facebook"
+        },
+        {
+          "title": "invideo AI",
+          "count": 24,
+          "slug": "invideo-ai"
+        },
+        {
+          "title": "Phần mềm",
+          "count": 24,
+          "slug": "phan-mem"
+        },
+        {
+          "title": "POE Premium",
+          "count": 24,
+          "slug": "poe-premium"
+        },
+        {
+          "title": "ZOOM",
+          "count": 24,
+          "slug": "zoom"
+        },
+        {
+          "title": "fanpage Fb",
+          "count": 23,
+          "slug": "fanpage-fb"
+        },
+        {
+          "title": "Youku",
+          "count": 23,
+          "slug": "youku"
+        },
+        {
+          "title": "Freepik",
+          "count": 21,
+          "slug": "freepik"
+        },
+        {
+          "title": "Google Meet",
+          "count": 21,
+          "slug": "google-meet"
+        },
+        {
+          "title": "Xingtu",
+          "count": 21,
+          "slug": "xingtu"
+        },
+        {
+          "title": "Dịch Vụ Youtube",
+          "count": 19,
+          "slug": "dich-vu-youtube"
+        },
+        {
+          "title": "TV360",
+          "count": 19,
+          "slug": "tv360"
+        },
+        {
+          "title": "Dịch Vụ Instagram",
+          "count": 18,
+          "slug": "dich-vu-instagram"
+        },
+        {
+          "title": "BM Việt Cổ",
+          "count": 17,
+          "slug": "bm-viet-co"
+        },
+        {
+          "title": "Gologin",
+          "count": 17,
+          "slug": "gologin"
+        },
+        {
+          "title": "Pornhub Premium",
+          "count": 17,
+          "slug": "pornhub-premium"
+        },
+        {
+          "title": "Autodesk",
+          "count": 15,
+          "slug": "autodesk"
+        },
+        {
+          "title": "Pia VPN",
+          "count": 15,
+          "slug": "pia-vpn"
+        },
+        {
+          "title": "Proton VPN",
+          "count": 15,
+          "slug": "proton-vpn"
+        },
+        {
+          "title": "TWITTER",
+          "count": 15,
+          "slug": "twitter"
+        },
+        {
+          "title": "Lovable",
+          "count": 14,
+          "slug": "lovable"
+        },
+        {
+          "title": "Apple Music",
+          "count": 13,
+          "slug": "apple-music"
+        },
+        {
+          "title": "OutlookMaill",
+          "count": 13,
+          "slug": "outlookmaill"
+        },
+        {
+          "title": "Ladipage",
+          "count": 12,
+          "slug": "ladipage"
+        },
+        {
+          "title": "SoundCloud",
+          "count": 12,
+          "slug": "soundcloud"
+        },
+        {
+          "title": "Dịch Vụ Shoppe",
+          "count": 11,
+          "slug": "dich-vu-shoppe"
+        },
+        {
+          "title": "Email",
+          "count": 11,
+          "slug": "email"
+        },
+        {
+          "title": "Speechify",
+          "count": 11,
+          "slug": "speechify"
+        },
+        {
+          "title": "FlexClip AI",
+          "count": 10,
+          "slug": "flexclip-ai"
+        },
+        {
+          "title": "Github Copilot",
+          "count": 10,
+          "slug": "github-copilot"
+        },
+        {
+          "title": "Google Antigravity AI",
+          "count": 10,
+          "slug": "google-antigravity-ai"
+        },
+        {
+          "title": "Hedra",
+          "count": 10,
+          "slug": "hedra"
+        },
+        {
+          "title": "iQIYI",
+          "count": 10,
+          "slug": "iqiyi"
+        },
+        {
+          "title": "Luna proxy",
+          "count": 10,
+          "slug": "luna-proxy"
+        },
+        {
+          "title": "Shakker AI",
+          "count": 10,
+          "slug": "shakker-ai"
+        },
+        {
+          "title": "TKQC",
+          "count": 10,
+          "slug": "tkqc"
+        },
+        {
+          "title": "Ideogram AI",
+          "count": 9,
+          "slug": "ideogram-ai"
+        },
+        {
+          "title": "vidIQ",
+          "count": 9,
+          "slug": "vidiq"
+        },
+        {
+          "title": "Beautiful.ai",
+          "count": 7,
+          "slug": "beautiful-ai"
+        },
+        {
+          "title": "Facebook",
+          "count": 7,
+          "slug": "facebook"
+        },
+        {
+          "title": "Locket",
+          "count": 7,
+          "slug": "locket"
+        },
+        {
+          "title": "Notion",
+          "count": 7,
+          "slug": "notion"
+        },
+        {
+          "title": "Notta AI",
+          "count": 7,
+          "slug": "notta-ai"
+        },
+        {
+          "title": "PicsArt",
+          "count": 7,
+          "slug": "picsart"
+        },
+        {
+          "title": "ideogramAI",
+          "count": 6,
+          "slug": "ideogramai"
+        },
+        {
+          "title": "Review Map",
+          "count": 6,
+          "slug": "review-map"
+        },
+        {
+          "title": "Sider AI",
+          "count": 6,
+          "slug": "sider-ai"
+        },
+        {
+          "title": "9Proxy",
+          "count": 5,
+          "slug": "9proxy"
+        },
+        {
+          "title": "Genspark",
+          "count": 5,
+          "slug": "genspark"
+        },
+        {
+          "title": "Hypic",
+          "count": 5,
+          "slug": "hypic"
+        },
+        {
+          "title": "Peechify",
+          "count": 5,
+          "slug": "peechify"
+        },
+        {
+          "title": "Pixverse",
+          "count": 5,
+          "slug": "pixverse"
+        },
+        {
+          "title": "Dịch Vụ Twitter",
+          "count": 4,
+          "slug": "dich-vu-twitter"
+        },
+        {
+          "title": "Hotmail",
+          "count": 3,
+          "slug": "hotmail"
+        },
+        {
+          "title": "Magnific AI",
+          "count": 3,
+          "slug": "magnific-ai"
+        },
+        {
+          "title": "Otter AI",
+          "count": 3,
+          "slug": "otter-ai"
+        },
+        {
+          "title": "Outlook",
+          "count": 3,
+          "slug": "outlook"
+        },
+        {
+          "title": "YahooMail",
+          "count": 3,
+          "slug": "yahoomail"
+        },
+        {
+          "title": "Mail CHPlay",
+          "count": 2,
+          "slug": "mail-chplay"
+        },
+        {
+          "title": "Genspark AI",
+          "count": 1,
+          "slug": "genspark-ai"
+        },
+        {
+          "title": "Mapify",
+          "count": 1,
+          "slug": "mapify"
+        },
+        {
+          "title": "MISA AI",
+          "count": 1,
+          "slug": "misa-ai"
+        },
+        {
+          "title": "Qobuz",
+          "count": 1,
+          "slug": "qobuz"
+        }
+      ],
+      "childCount": 118,
+      "leafHits": 3931,
+      "displayGroups": [
+        {
+          "name": "AI Chat & Agent",
+          "count": 19,
+          "hits": 533,
+          "children": [
+            {
+              "title": "Monica",
+              "count": 78,
+              "slug": "monica"
+            },
+            {
+              "title": "ChatGPT",
+              "count": 76,
+              "slug": "chatgpt"
+            },
+            {
+              "title": "Grok",
+              "count": 65,
+              "slug": "grok"
+            },
+            {
+              "title": "Copilot",
+              "count": 56,
+              "slug": "copilot"
+            },
+            {
+              "title": "Cursor",
+              "count": 55,
+              "slug": "cursor"
+            },
+            {
+              "title": "Gemini",
+              "count": 35,
+              "slug": "gemini"
+            },
+            {
+              "title": "Claude",
+              "count": 34,
+              "slug": "claude"
+            },
+            {
+              "title": "Perplexity",
+              "count": 30,
+              "slug": "perplexity"
+            },
+            {
+              "title": "Manus AI",
+              "count": 25,
+              "slug": "manus-ai"
+            },
+            {
+              "title": "POE Premium",
+              "count": 24,
+              "slug": "poe-premium"
+            },
+            {
+              "title": "Lovable",
+              "count": 14,
+              "slug": "lovable"
+            },
+            {
+              "title": "Github Copilot",
+              "count": 10,
+              "slug": "github-copilot"
+            },
+            {
+              "title": "Google Antigravity AI",
+              "count": 10,
+              "slug": "google-antigravity-ai"
+            },
+            {
+              "title": "Beautiful.ai",
+              "count": 7,
+              "slug": "beautiful-ai"
+            },
+            {
+              "title": "Sider AI",
+              "count": 6,
+              "slug": "sider-ai"
+            },
+            {
+              "title": "Genspark",
+              "count": 5,
+              "slug": "genspark"
+            },
+            {
+              "title": "Genspark AI",
+              "count": 1,
+              "slug": "genspark-ai"
+            },
+            {
+              "title": "Mapify",
+              "count": 1,
+              "slug": "mapify"
+            },
+            {
+              "title": "MISA AI",
+              "count": 1,
+              "slug": "misa-ai"
+            }
+          ]
+        },
+        {
+          "name": "AI Ảnh & Video",
+          "count": 19,
+          "hits": 519,
+          "children": [
+            {
+              "title": "Heygen",
+              "count": 71,
+              "slug": "heygen"
+            },
+            {
+              "title": "Midjourney",
+              "count": 55,
+              "slug": "midjourney"
+            },
+            {
+              "title": "Runway",
+              "count": 48,
+              "slug": "runway"
+            },
+            {
+              "title": "Google Ultra Veo 3",
+              "count": 45,
+              "slug": "google-ultra-veo-3"
+            },
+            {
+              "title": "Gamma Pro",
+              "count": 44,
+              "slug": "gamma-pro"
+            },
+            {
+              "title": "Hailou",
+              "count": 40,
+              "slug": "hailou"
+            },
+            {
+              "title": "Higgsfield AI",
+              "count": 31,
+              "slug": "higgsfield-ai"
+            },
+            {
+              "title": "Vidu",
+              "count": 28,
+              "slug": "vidu"
+            },
+            {
+              "title": "Leonardo AI",
+              "count": 27,
+              "slug": "leonardo-ai"
+            },
+            {
+              "title": "Veed AI Pro",
+              "count": 27,
+              "slug": "veed-ai-pro"
+            },
+            {
+              "title": "Kling AI",
+              "count": 26,
+              "slug": "kling-ai"
+            },
+            {
+              "title": "invideo AI",
+              "count": 24,
+              "slug": "invideo-ai"
+            },
+            {
+              "title": "FlexClip AI",
+              "count": 10,
+              "slug": "flexclip-ai"
+            },
+            {
+              "title": "Hedra",
+              "count": 10,
+              "slug": "hedra"
+            },
+            {
+              "title": "Shakker AI",
+              "count": 10,
+              "slug": "shakker-ai"
+            },
+            {
+              "title": "Ideogram AI",
+              "count": 9,
+              "slug": "ideogram-ai"
+            },
+            {
+              "title": "ideogramAI",
+              "count": 6,
+              "slug": "ideogramai"
+            },
+            {
+              "title": "Pixverse",
+              "count": 5,
+              "slug": "pixverse"
+            },
+            {
+              "title": "Magnific AI",
+              "count": 3,
+              "slug": "magnific-ai"
+            }
+          ]
+        },
+        {
+          "name": "AI Âm thanh",
+          "count": 7,
+          "hits": 184,
+          "children": [
+            {
+              "title": "Vbee",
+              "count": 71,
+              "slug": "vbee"
+            },
+            {
+              "title": "Elevenlabs",
+              "count": 54,
+              "slug": "elevenlabs"
+            },
+            {
+              "title": "Suno",
+              "count": 33,
+              "slug": "suno"
+            },
+            {
+              "title": "Speechify",
+              "count": 11,
+              "slug": "speechify"
+            },
+            {
+              "title": "Notta AI",
+              "count": 7,
+              "slug": "notta-ai"
+            },
+            {
+              "title": "Peechify",
+              "count": 5,
+              "slug": "peechify"
+            },
+            {
+              "title": "Otter AI",
+              "count": 3,
+              "slug": "otter-ai"
+            }
+          ]
+        },
+        {
+          "name": "Thiết kế & Đồ họa",
+          "count": 11,
+          "hits": 449,
+          "children": [
+            {
+              "title": "Capcut",
+              "count": 126,
+              "slug": "capcut"
+            },
+            {
+              "title": "Meitu",
+              "count": 79,
+              "slug": "meitu"
+            },
+            {
+              "title": "Adobe",
+              "count": 57,
+              "slug": "adobe"
+            },
+            {
+              "title": "Canva",
+              "count": 40,
+              "slug": "canva"
+            },
+            {
+              "title": "Figma",
+              "count": 40,
+              "slug": "figma"
+            },
+            {
+              "title": "SketchUP",
+              "count": 38,
+              "slug": "sketchup"
+            },
+            {
+              "title": "Freepik",
+              "count": 21,
+              "slug": "freepik"
+            },
+            {
+              "title": "Xingtu",
+              "count": 21,
+              "slug": "xingtu"
+            },
+            {
+              "title": "Autodesk",
+              "count": 15,
+              "slug": "autodesk"
+            },
+            {
+              "title": "PicsArt",
+              "count": 7,
+              "slug": "picsart"
+            },
+            {
+              "title": "Hypic",
+              "count": 5,
+              "slug": "hypic"
+            }
+          ]
+        },
+        {
+          "name": "Giải trí & Streaming",
+          "count": 17,
+          "hits": 501,
+          "children": [
+            {
+              "title": "Spotify",
+              "count": 73,
+              "slug": "spotify"
+            },
+            {
+              "title": "Netflix",
+              "count": 72,
+              "slug": "netflix"
+            },
+            {
+              "title": "Youtube",
+              "count": 69,
+              "slug": "youtube"
+            },
+            {
+              "title": "FPT Play",
+              "count": 47,
+              "slug": "fpt-play"
+            },
+            {
+              "title": "Galaxy Play",
+              "count": 40,
+              "slug": "galaxy-play"
+            },
+            {
+              "title": "Wink",
+              "count": 34,
+              "slug": "wink"
+            },
+            {
+              "title": "Vieon",
+              "count": 28,
+              "slug": "vieon"
+            },
+            {
+              "title": "Nitro Discord",
+              "count": 27,
+              "slug": "nitro-discord"
+            },
+            {
+              "title": "Youku",
+              "count": 23,
+              "slug": "youku"
+            },
+            {
+              "title": "TV360",
+              "count": 19,
+              "slug": "tv360"
+            },
+            {
+              "title": "Pornhub Premium",
+              "count": 17,
+              "slug": "pornhub-premium"
+            },
+            {
+              "title": "Apple Music",
+              "count": 13,
+              "slug": "apple-music"
+            },
+            {
+              "title": "SoundCloud",
+              "count": 12,
+              "slug": "soundcloud"
+            },
+            {
+              "title": "iQIYI",
+              "count": 10,
+              "slug": "iqiyi"
+            },
+            {
+              "title": "vidIQ",
+              "count": 9,
+              "slug": "vidiq"
+            },
+            {
+              "title": "Locket",
+              "count": 7,
+              "slug": "locket"
+            },
+            {
+              "title": "Qobuz",
+              "count": 1,
+              "slug": "qobuz"
+            }
+          ]
+        },
+        {
+          "name": "Tài khoản MXH",
+          "count": 5,
+          "hits": 216,
+          "children": [
+            {
+              "title": "INSTAGRAM",
+              "count": 78,
+              "slug": "instagram"
+            },
+            {
+              "title": "Tiktok",
+              "count": 76,
+              "slug": "tiktok"
+            },
+            {
+              "title": "THREADS",
+              "count": 40,
+              "slug": "threads"
+            },
+            {
+              "title": "TWITTER",
+              "count": 15,
+              "slug": "twitter"
+            },
+            {
+              "title": "Facebook",
+              "count": 7,
+              "slug": "facebook"
+            }
+          ]
+        },
+        {
+          "name": "Dịch vụ MXH & Buff",
+          "count": 13,
+          "hits": 393,
+          "children": [
+            {
+              "title": "Tăng tương tác",
+              "count": 157,
+              "slug": "tang-tuong-tac"
+            },
+            {
+              "title": "Dịch Vụ Facebook",
+              "count": 42,
+              "slug": "dich-vu-facebook"
+            },
+            {
+              "title": "Dịch vụ Telegram",
+              "count": 37,
+              "slug": "dich-vu-telegram"
+            },
+            {
+              "title": "Dịch Vụ Tiktok",
+              "count": 25,
+              "slug": "dich-vu-tiktok"
+            },
+            {
+              "title": "Group Facebook",
+              "count": 24,
+              "slug": "group-facebook"
+            },
+            {
+              "title": "fanpage Fb",
+              "count": 23,
+              "slug": "fanpage-fb"
+            },
+            {
+              "title": "Dịch Vụ Youtube",
+              "count": 19,
+              "slug": "dich-vu-youtube"
+            },
+            {
+              "title": "Dịch Vụ Instagram",
+              "count": 18,
+              "slug": "dich-vu-instagram"
+            },
+            {
+              "title": "BM Việt Cổ",
+              "count": 17,
+              "slug": "bm-viet-co"
+            },
+            {
+              "title": "Dịch Vụ Shoppe",
+              "count": 11,
+              "slug": "dich-vu-shoppe"
+            },
+            {
+              "title": "TKQC",
+              "count": 10,
+              "slug": "tkqc"
+            },
+            {
+              "title": "Review Map",
+              "count": 6,
+              "slug": "review-map"
+            },
+            {
+              "title": "Dịch Vụ Twitter",
+              "count": 4,
+              "slug": "dich-vu-twitter"
+            }
+          ]
+        },
+        {
+          "name": "VPN, Proxy & Antidetect",
+          "count": 11,
+          "hits": 319,
+          "children": [
+            {
+              "title": "Proxy",
+              "count": 59,
+              "slug": "proxy"
+            },
+            {
+              "title": "ExpressVPN",
+              "count": 57,
+              "slug": "expressvpn"
+            },
+            {
+              "title": "Nord VPN",
+              "count": 51,
+              "slug": "nord-vpn"
+            },
+            {
+              "title": "Surfshark",
+              "count": 35,
+              "slug": "surfshark"
+            },
+            {
+              "title": "Key HMA",
+              "count": 30,
+              "slug": "key-hma"
+            },
+            {
+              "title": "GPM Login",
+              "count": 25,
+              "slug": "gpm-login"
+            },
+            {
+              "title": "Gologin",
+              "count": 17,
+              "slug": "gologin"
+            },
+            {
+              "title": "Pia VPN",
+              "count": 15,
+              "slug": "pia-vpn"
+            },
+            {
+              "title": "Proton VPN",
+              "count": 15,
+              "slug": "proton-vpn"
+            },
+            {
+              "title": "Luna proxy",
+              "count": 10,
+              "slug": "luna-proxy"
+            },
+            {
+              "title": "9Proxy",
+              "count": 5,
+              "slug": "9proxy"
+            }
+          ]
+        },
+        {
+          "name": "Làm việc & Văn phòng",
+          "count": 6,
+          "hits": 130,
+          "children": [
+            {
+              "title": "Google Drive",
+              "count": 35,
+              "slug": "google-drive"
+            },
+            {
+              "title": "Tradingview",
+              "count": 31,
+              "slug": "tradingview"
+            },
+            {
+              "title": "ZOOM",
+              "count": 24,
+              "slug": "zoom"
+            },
+            {
+              "title": "Google Meet",
+              "count": 21,
+              "slug": "google-meet"
+            },
+            {
+              "title": "Ladipage",
+              "count": 12,
+              "slug": "ladipage"
+            },
+            {
+              "title": "Notion",
+              "count": 7,
+              "slug": "notion"
+            }
+          ]
+        },
+        {
+          "name": "Email & Hệ thống",
+          "count": 6,
+          "hits": 35,
+          "children": [
+            {
+              "title": "OutlookMaill",
+              "count": 13,
+              "slug": "outlookmaill"
+            },
+            {
+              "title": "Email",
+              "count": 11,
+              "slug": "email"
+            },
+            {
+              "title": "Hotmail",
+              "count": 3,
+              "slug": "hotmail"
+            },
+            {
+              "title": "Outlook",
+              "count": 3,
+              "slug": "outlook"
+            },
+            {
+              "title": "YahooMail",
+              "count": 3,
+              "slug": "yahoomail"
+            },
+            {
+              "title": "Mail CHPlay",
+              "count": 2,
+              "slug": "mail-chplay"
+            }
+          ]
+        },
+        {
+          "name": "Bảo mật",
+          "count": 1,
+          "hits": 24,
+          "children": [
+            {
+              "title": "Diệt Virus",
+              "count": 24,
+              "slug": "diet-virus"
+            }
+          ]
+        },
+        {
+          "name": "Khác / chưa phân brand",
+          "count": 3,
+          "hits": 628,
+          "children": [
+            {
+              "title": "Tài Khoản Khác",
+              "count": 368,
+              "slug": "tai-khoan-khac"
+            },
+            {
+              "title": "(Chưa gắn leaf)",
+              "count": 236,
+              "slug": "chua-gan-leaf"
+            },
+            {
+              "title": "Phần mềm",
+              "count": 24,
+              "slug": "phan-mem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "game",
+      "title": "Game",
+      "seoTitle": "Tài khoản Game & Steam giá rẻ",
+      "h1": "Game",
+      "note": "Steam, acc game, thể loại game",
+      "children": [
+        {
+          "title": "Game",
+          "count": 128,
+          "slug": "game"
+        },
+        {
+          "title": "Steam",
+          "count": 126,
+          "slug": "steam"
+        },
+        {
+          "title": "Thế Giới Mở + Phiêu Lưu",
+          "count": 50,
+          "slug": "the-gioi-mo-phieu-luu"
+        },
+        {
+          "title": "Bắn Súng",
+          "count": 22,
+          "slug": "ban-sung"
+        },
+        {
+          "title": "Đối Kháng",
+          "count": 18,
+          "slug": "doi-khang"
+        },
+        {
+          "title": "Sinh Tồn",
+          "count": 18,
+          "slug": "sinh-ton"
+        },
+        {
+          "title": "Chiến Lược",
+          "count": 13,
+          "slug": "chien-luoc"
+        },
+        {
+          "title": "Horror",
+          "count": 1,
+          "slug": "horror"
+        }
+      ],
+      "childCount": 8,
+      "leafHits": 376
+    },
+    {
+      "slug": "khoa-hoc",
+      "title": "Khóa học",
+      "seoTitle": "Khóa học online & ngoại ngữ giá rẻ",
+      "h1": "Khóa học",
+      "note": "Khóa học, ngoại ngữ, luyện thi, công cụ học thuật, chủ đề khóa học",
+      "children": [
+        {
+          "title": "Khoá học",
+          "count": 126,
+          "slug": "khoa-hoc"
+        },
+        {
+          "title": "Duolingo",
+          "count": 68,
+          "slug": "duolingo"
+        },
+        {
+          "title": "Elsa Speak",
+          "count": 64,
+          "slug": "elsa-speak"
+        },
+        {
+          "title": "Turnitin",
+          "count": 32,
+          "slug": "turnitin"
+        },
+        {
+          "title": "AI và Công nghệ",
+          "count": 27,
+          "slug": "ai-va-cong-nghe"
+        },
+        {
+          "title": "grammarly",
+          "count": 20,
+          "slug": "grammarly"
+        },
+        {
+          "title": "Studocu",
+          "count": 19,
+          "slug": "studocu"
+        },
+        {
+          "title": "Trí tuệ nhân tạo",
+          "count": 19,
+          "slug": "tri-tue-nhan-tao"
+        },
+        {
+          "title": "Ngoại ngữ",
+          "count": 14,
+          "slug": "ngoai-ngu"
+        },
+        {
+          "title": "chess",
+          "count": 13,
+          "slug": "chess"
+        },
+        {
+          "title": "Video Và Nhiếp Ảnh",
+          "count": 12,
+          "slug": "video-va-nhiep-anh"
+        },
+        {
+          "title": "DeepL",
+          "count": 11,
+          "slug": "deepl"
+        },
+        {
+          "title": "Ielts",
+          "count": 9,
+          "slug": "ielts"
+        },
+        {
+          "title": "Quizlet",
+          "count": 8,
+          "slug": "quizlet"
+        },
+        {
+          "title": "Tài chính kế toán",
+          "count": 7,
+          "slug": "tai-chinh-ke-toan"
+        },
+        {
+          "title": "Khoá Học TikTok",
+          "count": 6,
+          "slug": "khoa-hoc-tiktok"
+        },
+        {
+          "title": "Khoá Học Youtube",
+          "count": 6,
+          "slug": "khoa-hoc-youtube"
+        },
+        {
+          "title": "Thiết Kế Đồ Hoạ",
+          "count": 6,
+          "slug": "thiet-ke-do-hoa"
+        },
+        {
+          "title": "Toeic",
+          "count": 6,
+          "slug": "toeic"
+        },
+        {
+          "title": "Khóa học Facebook",
+          "count": 5,
+          "slug": "khoa-hoc-facebook"
+        },
+        {
+          "title": "Lập Trình & Công Nghệ",
+          "count": 4,
+          "slug": "lap-trinh-cong-nghe"
+        },
+        {
+          "title": "Quillbot",
+          "count": 4,
+          "slug": "quillbot"
+        },
+        {
+          "title": "Tiếng anh giao tiếp",
+          "count": 4,
+          "slug": "tieng-anh-giao-tiep"
+        },
+        {
+          "title": "Tiếng trung",
+          "count": 4,
+          "slug": "tieng-trung"
+        },
+        {
+          "title": "Âm nhạc - Làm nhạc",
+          "count": 3,
+          "slug": "am-nhac-lam-nhac"
+        },
+        {
+          "title": "Kinh Doanh Shopee",
+          "count": 1,
+          "slug": "kinh-doanh-shopee"
+        },
+        {
+          "title": "SEO",
+          "count": 1,
+          "slug": "seo"
+        },
+        {
+          "title": "Thu Nhập Online",
+          "count": 1,
+          "slug": "thu-nhap-online"
+        },
+        {
+          "title": "Tiếng Hàn",
+          "count": 1,
+          "slug": "tieng-han"
+        },
+        {
+          "title": "Tin học văn phòng",
+          "count": 1,
+          "slug": "tin-hoc-van-phong"
+        },
+        {
+          "title": "Wordwall AI",
+          "count": 1,
+          "slug": "wordwall-ai"
+        }
+      ],
+      "childCount": 31,
+      "leafHits": 503
+    }
+  ]
+}

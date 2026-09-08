@@ -1,0 +1,491 @@
+{
+  "generatedAt": "2026-09-07T05:45:13.368Z",
+  "mode": "strict-brand-unique-80",
+  "shops": 80,
+  "kept": 3671,
+  "removed": 203,
+  "sizeMin": 45,
+  "sizeMax": 46,
+  "shopsDetail": [
+    {
+      "name": "ngocdeal",
+      "token": "4757d118cfe2546990eb8fcd",
+      "slug": "ngocdeal",
+      "n": 46
+    },
+    {
+      "name": "khangsale",
+      "token": "a2c4861e72b777244df81c3f",
+      "slug": "khangsale",
+      "n": 46
+    },
+    {
+      "name": "linhzone",
+      "token": "ee08a4f1c9ce2ff7f3b2a00a",
+      "slug": "linhzone",
+      "n": 46
+    },
+    {
+      "name": "thaoorder",
+      "token": "917dd29fb641eda5538e940d",
+      "slug": "thaoorder",
+      "n": 46
+    },
+    {
+      "name": "hienmart",
+      "token": "5dd37ab550aa8f5bb2da2dca",
+      "slug": "hienmart",
+      "n": 46
+    },
+    {
+      "name": "kimshop",
+      "token": "f1f70fb07733e3658b9b1e18",
+      "slug": "kimshop",
+      "n": 46
+    },
+    {
+      "name": "huycenter",
+      "token": "e661e391faff77e28dfc6a36",
+      "slug": "huycenter",
+      "n": 46
+    },
+    {
+      "name": "anhstore",
+      "token": "d25e0013e00654a26a74f673",
+      "slug": "anhstore",
+      "n": 46
+    },
+    {
+      "name": "hoangsale",
+      "token": "e884fe4d8e30cdb7af6a0478",
+      "slug": "hoangsale",
+      "n": 46
+    },
+    {
+      "name": "tuanshop",
+      "token": "c1f2599b9721279fec33b6c7",
+      "slug": "tuanshop",
+      "n": 46
+    },
+    {
+      "name": "hanashop",
+      "token": "17fc723225e163922ed3f5ff",
+      "slug": "hanashop",
+      "n": 46
+    },
+    {
+      "name": "lamstore",
+      "token": "63df67636f16e3304fec09a9",
+      "slug": "lamstore",
+      "n": 46
+    },
+    {
+      "name": "phatmart",
+      "token": "4f2a4febe3c541d290e612c1",
+      "slug": "phatmart",
+      "n": 46
+    },
+    {
+      "name": "thunguyet95",
+      "token": "0a66f91a060fe586ebe2f6f1",
+      "slug": "thunguyet95",
+      "n": 46
+    },
+    {
+      "name": "dungshop",
+      "token": "8c62d15863cae9cec16ede9d",
+      "slug": "dungshop",
+      "n": 46
+    },
+    {
+      "name": "binhplus",
+      "token": "9e837242b32c7a8a394b816e",
+      "slug": "binhplus",
+      "n": 46
+    },
+    {
+      "name": "truongzone",
+      "token": "d44af7234801f5db16c25786",
+      "slug": "truongzone",
+      "n": 46
+    },
+    {
+      "name": "nganstore",
+      "token": "850ba81d0431bd57ea03944b",
+      "slug": "nganstore",
+      "n": 46
+    },
+    {
+      "name": "namcenter",
+      "token": "08fc559ade7e71f009402772",
+      "slug": "namcenter",
+      "n": 46
+    },
+    {
+      "name": "khoaplus",
+      "token": "302abff46c2a0db2b7159d4c",
+      "slug": "khoaplus",
+      "n": 46
+    },
+    {
+      "name": "minhdeal",
+      "token": "04a72c164c78b0892613c7d5",
+      "slug": "minhdeal",
+      "n": 46
+    },
+    {
+      "name": "kietdeal",
+      "token": "b4aaca3f9e56ace1561b7db8",
+      "slug": "kietdeal",
+      "n": 46
+    },
+    {
+      "name": "vietfast",
+      "token": "19ee9a3f2d456236c2e32d4e",
+      "slug": "vietfast",
+      "n": 46
+    },
+    {
+      "name": "khoadeal",
+      "token": "5251bdaa510efe3f51eae20c",
+      "slug": "khoadeal",
+      "n": 46
+    },
+    {
+      "name": "duonghub",
+      "token": "67603f53ca6310c07941142e",
+      "slug": "duonghub",
+      "n": 46
+    },
+    {
+      "name": "vanhub",
+      "token": "0c96f6f7d8c78199588ecbab",
+      "slug": "vanhub",
+      "n": 46
+    },
+    {
+      "name": "namper562",
+      "token": "fc4bef26c875baccf68eb83a",
+      "slug": "namper562",
+      "n": 46
+    },
+    {
+      "name": "trangsale",
+      "token": "29bef23d403ac7c1d591c409",
+      "slug": "trangsale",
+      "n": 46
+    },
+    {
+      "name": "hanhshop",
+      "token": "0952a44b9fda5599b706297c",
+      "slug": "hanhshop",
+      "n": 46
+    },
+    {
+      "name": "haorder",
+      "token": "3645e295c47171539befc3d8",
+      "slug": "haorder",
+      "n": 46
+    },
+    {
+      "name": "dinhthiep16",
+      "token": "6f47ee613868856ba5864979",
+      "slug": "dinhthiep16",
+      "n": 46
+    },
+    {
+      "name": "vananh93",
+      "token": "b2c198e79cf7949264c7a047",
+      "slug": "vananh93",
+      "n": 46
+    },
+    {
+      "name": "anhfast",
+      "token": "9a17c5964e1784e7909f4ebd",
+      "slug": "anhfast",
+      "n": 46
+    },
+    {
+      "name": "quangdeal",
+      "token": "b161504a380e803e737c5f44",
+      "slug": "quangdeal",
+      "n": 46
+    },
+    {
+      "name": "khanhmax",
+      "token": "41a47c77f163c4b44f8938ce",
+      "slug": "khanhmax",
+      "n": 46
+    },
+    {
+      "name": "nghiafast",
+      "token": "052dbf69e9e80057cd394d59",
+      "slug": "nghiafast",
+      "n": 46
+    },
+    {
+      "name": "minhcenter",
+      "token": "6bf4365ec3d81cd3124337a8",
+      "slug": "minhcenter",
+      "n": 46
+    },
+    {
+      "name": "phuongfast",
+      "token": "5e3167a16d23ba05d1d9a0d4",
+      "slug": "phuongfast",
+      "n": 46
+    },
+    {
+      "name": "sontiktok",
+      "token": "1f2f4fa8c6ab768e0a0ab4fb",
+      "slug": "sontiktok",
+      "n": 46
+    },
+    {
+      "name": "vydeal",
+      "token": "997ce41421c5b96df45e809e",
+      "slug": "vydeal",
+      "n": 46
+    },
+    {
+      "name": "binhstore",
+      "token": "a591d673e5ebccd78c349e24",
+      "slug": "binhstore",
+      "n": 46
+    },
+    {
+      "name": "phuongdeal",
+      "token": "a545c36c93b1e853040257e4",
+      "slug": "phuongdeal",
+      "n": 46
+    },
+    {
+      "name": "khoimart",
+      "token": "c2140ae687b5e96a0989879f",
+      "slug": "khoimart",
+      "n": 46
+    },
+    {
+      "name": "huyshop",
+      "token": "fb8f3f27d272edb4d7e292a0",
+      "slug": "huyshop",
+      "n": 46
+    },
+    {
+      "name": "tamdeal",
+      "token": "1d2c27ae795738ffbee2d9ac",
+      "slug": "tamdeal",
+      "n": 46
+    },
+    {
+      "name": "phuongmart",
+      "token": "b46a51a57d62f50e656f4ebd",
+      "slug": "phuongmart",
+      "n": 46
+    },
+    {
+      "name": "phucmax",
+      "token": "c3226e3ae96c7e9fa4d3dd7b",
+      "slug": "phucmax",
+      "n": 46
+    },
+    {
+      "name": "nhushop",
+      "token": "33a5f1414ceb980b8e4ef10b",
+      "slug": "nhushop",
+      "n": 46
+    },
+    {
+      "name": "trangcenter",
+      "token": "a1e888ab908043701b119d3a",
+      "slug": "trangcenter",
+      "n": 46
+    },
+    {
+      "name": "phucdeal",
+      "token": "d409719754cf66269c34cf65",
+      "slug": "phucdeal",
+      "n": 46
+    },
+    {
+      "name": "kimdeal",
+      "token": "a393295490ecac6bf3e55e49",
+      "slug": "kimdeal",
+      "n": 46
+    },
+    {
+      "name": "trinhstore",
+      "token": "7e558f02675792c64a3ee096",
+      "slug": "trinhstore",
+      "n": 46
+    },
+    {
+      "name": "thanhmax",
+      "token": "5e82b4077c61d757c1cc43bc",
+      "slug": "thanhmax",
+      "n": 46
+    },
+    {
+      "name": "phatshop",
+      "token": "9a2db6334e2849f2485287bd",
+      "slug": "phatshop",
+      "n": 46
+    },
+    {
+      "name": "maiorder",
+      "token": "7c3122ade289051f1c40e2a0",
+      "slug": "maiorder",
+      "n": 46
+    },
+    {
+      "name": "quynhshop",
+      "token": "fd633d349100d1b529a29f7f",
+      "slug": "quynhshop",
+      "n": 46
+    },
+    {
+      "name": "mydeal",
+      "token": "157d8281d473745053b41263",
+      "slug": "mydeal",
+      "n": 46
+    },
+    {
+      "name": "quanghub",
+      "token": "82b178663e963e5cb4ff71e8",
+      "slug": "quanghub",
+      "n": 46
+    },
+    {
+      "name": "lanstore",
+      "token": "2818a5f37bf63aba1f150296",
+      "slug": "lanstore",
+      "n": 46
+    },
+    {
+      "name": "quenetflix",
+      "token": "5c988c2e4646852af2d7e938",
+      "slug": "quenetflix",
+      "n": 46
+    },
+    {
+      "name": "khainet",
+      "token": "905078d5556e6c25b05be6df",
+      "slug": "khainet",
+      "n": 46
+    },
+    {
+      "name": "ngocfast",
+      "token": "2ea45e702c44d45743df25f3",
+      "slug": "ngocfast",
+      "n": 46
+    },
+    {
+      "name": "khanghub",
+      "token": "db1e37232dfb262a13cc6e9f",
+      "slug": "khanghub",
+      "n": 46
+    },
+    {
+      "name": "duycenter",
+      "token": "fb80375393362c9592e09e2c",
+      "slug": "duycenter",
+      "n": 46
+    },
+    {
+      "name": "myshop",
+      "token": "003f7c406c5d6ecb677fd36b",
+      "slug": "myshop",
+      "n": 46
+    },
+    {
+      "name": "phongmart",
+      "token": "1d929dde27dcdaecfa34af03",
+      "slug": "phongmart",
+      "n": 46
+    },
+    {
+      "name": "hongha04",
+      "token": "c310f147e5d741603fae39e8",
+      "slug": "hongha04",
+      "n": 46
+    },
+    {
+      "name": "phongshop",
+      "token": "b207d39fb726ba2c3a2d2339",
+      "slug": "phongshop",
+      "n": 46
+    },
+    {
+      "name": "phuongshop",
+      "token": "2ae674c5cfe8ba947ad076d8",
+      "slug": "phuongshop",
+      "n": 46
+    },
+    {
+      "name": "longhub",
+      "token": "eabc8a15c4c67f699d0328a9",
+      "slug": "longhub",
+      "n": 46
+    },
+    {
+      "name": "duongcapcut",
+      "token": "dd8104662d8cbd652ba8c59f",
+      "slug": "duongcapcut",
+      "n": 46
+    },
+    {
+      "name": "kietshop",
+      "token": "8680fb48b4fcf96dd0d326bc",
+      "slug": "kietshop",
+      "n": 45
+    },
+    {
+      "name": "thanhstore",
+      "token": "f87b2541229bfcd1a7c5223d",
+      "slug": "thanhstore",
+      "n": 45
+    },
+    {
+      "name": "mycenter",
+      "token": "70fd9bf0a78db9cdd9f6d369",
+      "slug": "mycenter",
+      "n": 45
+    },
+    {
+      "name": "vietshop",
+      "token": "85dd9192e170cfd39b30be24",
+      "slug": "vietshop",
+      "n": 45
+    },
+    {
+      "name": "linhdeal",
+      "token": "9d37a38d9c21ba8a728ce01f",
+      "slug": "linhdeal",
+      "n": 45
+    },
+    {
+      "name": "tuansale",
+      "token": "7d99bb6e6e94b45e96695e63",
+      "slug": "tuansale",
+      "n": 45
+    },
+    {
+      "name": "kimcenter",
+      "token": "879f5e1af93db45cbe3e0851",
+      "slug": "kimcenter",
+      "n": 45
+    },
+    {
+      "name": "lanmart",
+      "token": "9817a4aabbaa24c26e7d145a",
+      "slug": "lanmart",
+      "n": 45
+    },
+    {
+      "name": "ninhstore",
+      "token": "b5fa938a2afa546e89965314",
+      "slug": "ninhstore",
+      "n": 45
+    }
+  ]
+}
