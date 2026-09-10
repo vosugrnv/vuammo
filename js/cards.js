@@ -1,6 +1,18 @@
 /* ---------- Shared product card renderer (used by home, category & cart pages) ---------- */
 const money = n => n.toLocaleString("vi-VN") + "₫";
 
+/** Fisher–Yates shuffle — trộn vị trí mỗi lần tải trang (không cố định) */
+function shuffleArray(list){
+  const arr = Array.isArray(list) ? list.slice() : [];
+  for(let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i];
+    arr[i] = arr[j];
+    arr[j] = t;
+  }
+  return arr;
+}
+
 function escapeAttr(s){ return String(s || "").replace(/"/g,"&quot;"); }
 
 function shopNameOf(p){
@@ -24,7 +36,7 @@ function shopLinkOf(p){
     .trim()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
-  return slug ? ("/" + slug) : "/shop.html";
+  return slug ? ("/" + slug) : "/shop";
 }
 
 function discountBadge(p){
@@ -35,7 +47,11 @@ function discountBadge(p){
 
 function productCard(p){
   const rating = (p.rating && p.rating > 0 ? p.rating : 4.6).toFixed(1).replace(".", ",");
-  const href = typeof productHref === "function" ? productHref(p) : `product.html?slug=${slugify(p.name)}`;
+  const href = (typeof productHref === "function")
+    ? productHref(p)
+    : (typeof productSeoPath === "function")
+      ? productSeoPath(p)
+      : ("/tat-ca-san-pham/" + (p.slug || slugify(p.name)) + "-" + p.id);
   const shop = shopNameOf(p);
   const seed = (Number(p.id) || 0) * 17 + String(p.name || "").length * 13;
   const soldN = 800 + (seed % 15000);
@@ -60,7 +76,7 @@ function productCard(p){
     <a class="product-thumb" href="${href}"><img src="${p.image}" alt="${escapeAttr(p.name)}" loading="lazy"></a>
     <div class="product-body">
       <h3><a href="${href}">${p.name}</a></h3>
-      <a class="product-shop" href="${shopLinkOf(p)}" title="Xem gian hàng ${escapeAttr(shop)}">${shop}</a>
+      <a class="product-shop" href="${shopLinkOf(p)}" title="Xem gian hàng ${escapeAttr(shop)}"><span class="product-shop-prefix">Shop · </span>${shop}</a>
       <div class="rating"><span class="stars">★★★★★</span> ${rating} · ${sold} đã bán</div>
       <div class="price-row">
         <span class="price-label">Từ</span>

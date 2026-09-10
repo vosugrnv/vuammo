@@ -1,7 +1,7 @@
 const CATEGORY_META = {
   "cong-cu-ai": {
     title: "Công Cụ AI",
-    parent: {name:"Ứng dụng & Phần mềm khác", href:"category.html?cat=ung-dung-phan-mem-khac"},
+    parent: {name:"Ứng dụng & Phần mềm khác", href:"/category?cat=ung-dung-phan-mem-khac"},
     match: p => p.cats.includes("Công Cụ AI"),
     intro: "Danh mục Công Cụ AI tại Vua MMO tổng hợp các tài khoản AI phổ biến nhất hiện nay cho học tập, làm việc, lập trình, viết content, research và sáng tạo ảnh/video/âm thanh. Bạn có thể mua công cụ AI giá rẻ, chính chủ, giao nhanh — chọn theo đúng nhu cầu thay vì mua theo cảm tính.",
     chips: ["Viết lách & Nghiên cứu","Lập trình","Ảnh & Video AI","Âm thanh AI"],
@@ -59,12 +59,12 @@ document.getElementById("catTitle").textContent = meta.title;
 document.getElementById("catIntro").textContent = meta.intro;
 document.getElementById("catChips").innerHTML = meta.chips.map(c=>`<span class="category-chip">${c}</span>`).join("");
 
-const crumbHtml = [`<a href="index.html">Trang chủ</a>`];
+const crumbHtml = [`<a href="/">Trang chủ</a>`];
 if(meta.parent) crumbHtml.push(`<span class="sep">›</span><a href="${meta.parent.href}">${meta.parent.name}</a>`);
 crumbHtml.push(`<span class="sep">›</span><span class="current">${meta.title}</span>`);
 document.getElementById("breadcrumb").innerHTML = crumbHtml.join("");
 
-const items = RAW_PRODUCTS.filter(meta.match);
+const items = shuffleArray(RAW_PRODUCTS.filter(meta.match));
 const PAGE_SIZE = 15;
 let page = 1;
 

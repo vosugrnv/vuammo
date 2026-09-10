@@ -1,4 +1,4 @@
-/* Tất cả sản phẩm — 3 danh mục cha + toàn bộ danh mục con (leaf CSV) */
+﻿/* Tất cả sản phẩm — 3 danh mục cha + toàn bộ danh mục con (leaf CSV) */
 /* productTypeLabels / GENERIC_CAT: js/category-labels.js */
 
 const SHARED_INTRO_HTML = `
@@ -234,9 +234,23 @@ let reviewPage = 1;
 
 const PAGE_SIZE = 15;
 const params = new URLSearchParams(location.search);
-let activeSlug = params.get("cat") || "all";
-if(activeSlug === "khac") activeSlug = "tai-khoan-khac";
 const searchQuery = (params.get("q") || "").trim();
+
+function listingSlugFromPath(){
+  const parts = location.pathname.replace(/\/+$/, "").split("/").filter(Boolean);
+  // /tat-ca-san-pham[/parent[/child]]  (ignore legacy /vi/)
+  const i = parts[0] === "vi" ? 1 : 0;
+  if(parts[i] !== "tat-ca-san-pham") return null;
+  const a = parts[i + 1];
+  const b = parts[i + 2];
+  if(!a) return "all";
+  if(/-\d+$/.test(a)) return null; // product page, not listing
+  if(b) return b;
+  return a;
+}
+
+let activeSlug = listingSlugFromPath() || params.get("cat") || "all";
+if(activeSlug === "khac") activeSlug = "tai-khoan-khac";
 if(!searchQuery && !CATALOG.bySlug.has(activeSlug)) activeSlug = "all";
 if(searchQuery) activeSlug = "all";
 let page = 1;
@@ -245,7 +259,33 @@ let sortMode = "popular";
 function catalog(){ return CATALOG.find(activeSlug); }
 
 function catHref(slug){
-  return slug === "all" ? "tat-ca-san-pham.html" : `tat-ca-san-pham.html?cat=${slug}`;
+  if(slug === "all") return "/tat-ca-san-pham";
+  const entry = CATALOG.bySlug.get(slug);
+  if(!entry){
+    if(typeof categoryPathFromFilterSlug === "function") return categoryPathFromFilterSlug(slug);
+    return "/tat-ca-san-pham/" + slug;
+  }
+  if(entry.kind === "parent") return "/tat-ca-san-pham/" + entry.slug;
+  if(entry.kind === "child" && entry.parentSlug){
+    return "/tat-ca-san-pham/" + entry.parentSlug + "/" + entry.slug;
+  }
+  return "/tat-ca-san-pham/" + entry.slug;
+}
+
+function syncPrettyListingUrl(){
+  if(searchQuery) return;
+  // Never hijack product detail URLs (/tat-ca-san-pham/slug-123)
+  if(/\/(?:vi\/)?tat-ca-san-pham\/[^/]+-\d+\/?$/i.test(location.pathname || "")) return;
+  const pretty = catHref(activeSlug);
+  const cur = location.pathname.replace(/\/+$/, "") || "/";
+  const target = pretty.replace(/\/+$/, "") || "/";
+  if(cur === target) return;
+  // migrate ?cat= and /vi/… to pretty path
+  if(params.get("cat") || /^\/vi\//i.test(location.pathname) || cur !== target){
+    try{
+      history.replaceState(null, "", pretty);
+    }catch(_){}
+  }
 }
 
 function matchesSearch(p, q){
@@ -262,7 +302,7 @@ function filteredProducts(){
   if(sortMode==="price-asc") list = [...list].sort((a,b)=>a.price-b.price);
   else if(sortMode==="price-desc") list = [...list].sort((a,b)=>b.price-a.price);
   else if(sortMode==="rating") list = [...list].sort((a,b)=>(b.rating||0)-(a.rating||0));
-  else list = [...list].sort((a,b)=>(b.rating||0)-(a.rating||0) || a.price-b.price);
+  else list = typeof shuffleArray === "function" ? shuffleArray(list) : [...list];
   return list;
 }
 
@@ -463,15 +503,15 @@ function renderIntroFaqReviews(){
   else if(c.kind === "child") document.title = `Mua ${c.title} giá rẻ | Vua MMO`;
   else document.title = `${title} | Vua MMO`;
 
-  let crumb = `<a href="index.html">Trang chủ</a><span class="sep">›</span>`;
+  let crumb = `<a href="/">Trang chủ</a><span class="sep">›</span>`;
   if(searchQuery){
-    crumb += `<a href="tat-ca-san-pham.html">Tất cả sản phẩm</a><span class="sep">›</span><span class="current">${title}</span>`;
+    crumb += `<a href="/tat-ca-san-pham">Tất cả sản phẩm</a><span class="sep">›</span><span class="current">${title}</span>`;
   } else if(c.slug === "all"){
     crumb += `<span class="current">Tất cả sản phẩm</span>`;
   } else if(c.kind === "parent"){
-    crumb += `<a href="tat-ca-san-pham.html">Tất cả sản phẩm</a><span class="sep">›</span><span class="current">${c.title}</span>`;
+    crumb += `<a href="/tat-ca-san-pham">Tất cả sản phẩm</a><span class="sep">›</span><span class="current">${c.title}</span>`;
   } else {
-    crumb += `<a href="tat-ca-san-pham.html">Tất cả sản phẩm</a><span class="sep">›</span>`;
+    crumb += `<a href="/tat-ca-san-pham">Tất cả sản phẩm</a><span class="sep">›</span>`;
     if(c.parentSlug){
       crumb += `<a href="${catHref(c.parentSlug)}">${c.parentTitle || "Danh mục"}</a><span class="sep">›</span>`;
     }
@@ -493,6 +533,8 @@ function renderIntroFaqReviews(){
 }
 
 function init(){
+  document.documentElement.classList.add("js-ready");
+  syncPrettyListingUrl();
   renderFilters();
   renderIntroFaqReviews();
   renderProducts();

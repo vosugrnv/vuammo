@@ -58,9 +58,9 @@
   }
 
   function prettyShopUrl(shop) {
-    if (!shop) return "/shop.html";
+    if (!shop) return "/shop";
     if (typeof shopHref === "function") return shopHref(shop);
-    return shop.slug ? "/" + shop.slug : "/shop.html";
+    return shop.slug ? "/" + shop.slug : "/shop";
   }
 
   function hashSeed(str) {
@@ -91,7 +91,8 @@
 
   function avatarOf(shop) {
     if (typeof shopAvatarUrl === "function") return shopAvatarUrl(shop);
-    return shop.avatar || "images/logo-vuammo.png";
+    const raw = shop.avatar || "/images/logo-vuammo.png";
+    return typeof absAssetUrl === "function" ? absAssetUrl(raw) : (raw.charAt(0) === "/" || /^https?:/i.test(raw) ? raw : "/" + raw);
   }
 
   let allProducts = [];
@@ -177,11 +178,25 @@
     if (joined) joined.textContent = "Tham gia: " + joinDate(shop);
 
     const city = document.getElementById("shopCityLine");
-    if (city) city.textContent = (shop.city || "") + (shop.district ? " · " + shop.district : "");
+    if (city) city.textContent = "Giao dịch online · Đã xác minh";
 
     wireShopChat(shop);
 
     allProducts = typeof productsOfShop === "function" ? productsOfShop(shop) : [];
+    if (typeof shuffleArray === "function") allProducts = shuffleArray(allProducts);
+
+    const bioEl = document.getElementById("shopBio");
+    if (bioEl) {
+      const focusCats = allProducts.flatMap((p) => p.cats || []).filter(Boolean);
+      const topCats = [...new Set(focusCats)].slice(0, 3);
+      const count = allProducts.length;
+      bioEl.textContent =
+        shop.name +
+        " chuyên sản phẩm số trên Vua MMO" +
+        (topCats.length ? (" — " + topCats.join(", ")) : "") +
+        (count ? (". Đang có " + count + " sản phẩm") : "") +
+        ". Giao tự động, bảo hành rõ ràng, hỗ trợ nhanh.";
+    }
     const minPrice = allProducts.reduce((m, p) => Math.min(m, Number(p.price) || Infinity), Infinity);
     const fromEl = document.getElementById("shopFromPriceText");
     if (fromEl) {
@@ -209,12 +224,6 @@
       description: shop.bio,
       url: location.href,
       image: avatarOf(shop),
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: shop.city,
-        addressRegion: shop.district,
-        addressCountry: "VN"
-      },
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: shop.rating,

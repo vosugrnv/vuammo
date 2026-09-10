@@ -59,7 +59,7 @@ function pickDiverse(pool, limit){
     out.push(p);
     if(out.length >= limit) break;
   }
-  return out;
+  return shuffleArray(out);
 }
 
 const REVIEWS = [
@@ -76,11 +76,14 @@ const REVIEWS = [
 
 function productIsSelling(p){
   if(!p) return false;
+  if(!p.id || !p.slug) return false;
+  if(typeof isBlockedProduct === "function" && isBlockedProduct(p)) return false;
   if(p.inStock === false) return false;
   if(typeof p.stock === "number" && p.stock <= 0) return false;
   return true;
 }
 
+/** Cùng nguồn với trang Tất cả sản phẩm — chỉ SP đang bán, có đường dẫn SEO. */
 function sellingPool(){
   return RAW_PRODUCTS.filter(productIsSelling);
 }
@@ -133,6 +136,7 @@ function reviewCard(r){
 })();
 
 /* ---------- Render ---------- */
+document.documentElement.classList.add("js-ready");
 const HOME_QUICK = (() => {
   const pool = sellingPool().filter(p => typeof p.stock === "number" && p.stock > 0);
   return pickDiverse(pool.length ? pool : sellingPool(), 25);

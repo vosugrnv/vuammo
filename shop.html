@@ -1,6 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HXPVPM0RJL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HXPVPM0RJL');
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gian hàng | Vua MMO</title>
@@ -16,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20260907ticker2">
+<link rel="stylesheet" href="css/style.css?v=20260910shop1">
 </head>
 <body>
 
@@ -25,16 +35,16 @@
   <button class="side-nav-toggle" id="sideNavToggle" aria-label="Tất cả danh mục">
     <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
   </button>
-  <a href="tat-ca-san-pham.html" class="side-nav-item" title="Tất cả sản phẩm">
+  <a href="/tat-ca-san-pham" class="side-nav-item" title="Tất cả sản phẩm">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
   </a>
-  <a href="tat-ca-san-pham.html?cat=tai-khoan-cong-cu-ai" class="side-nav-item" title="Tài khoản & Công cụ AI">
+  <a href="/tat-ca-san-pham/tai-khoan-cong-cu-ai" class="side-nav-item" title="Tài khoản & Công cụ AI">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
   </a>
-  <a href="tat-ca-san-pham.html?cat=game" class="side-nav-item" title="Game">
+  <a href="/tat-ca-san-pham/game" class="side-nav-item" title="Game">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6.5 12h11"/><path d="M12 6.5v11"/><rect x="2" y="7" width="20" height="10" rx="4"/><circle cx="16.5" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="18.5" cy="12.5" r="1" fill="currentColor" stroke="none"/></svg>
   </a>
-  <a href="tat-ca-san-pham.html?cat=khoa-hoc" class="side-nav-item" title="Khóa học">
+  <a href="/tat-ca-san-pham/khoa-hoc" class="side-nav-item" title="Khóa học">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
   </a>
 </aside>
@@ -45,14 +55,14 @@
     <button class="icon-btn hide-desktop" id="menuBtn" aria-label="Menu">
       <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
-    <a href="index.html" class="logo">
+    <a href="/" class="logo">
       <img class="logo-img" src="images/logo-vuammo.png" alt="Vua MMO - Nền tảng giao dịch sản phẩm số">
     </a>
     <div class="search-bar">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       <input type="text" placeholder="Tìm sản phẩm ...">
     </div>
-    <a href="dang-ky-nguoi-ban.html" class="header-phone hide-mobile" title="Đăng ký làm người bán">
+    <a href="/dang-ky-nguoi-ban" class="header-phone hide-mobile" title="Đăng ký làm người bán">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span>Đăng ký làm người bán</span>
     </a>
@@ -67,23 +77,23 @@
         <span>Tất cả danh mục</span>
       </button>
             <nav class="nav-links">
-        <a href="gioi-thieu.html">
+        <a href="/gioi-thieu">
           <img src="https://khotaikhoan.net/wp-content/uploads/2026/02/Untitled-1-03.png.webp" alt="">Giới Thiệu
         </a>
-        <a href="tat-ca-san-pham.html"><span class="nav-ico nav-ico--red" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>Tất cả sản phẩm</a>
-        <a href="chia-se.html"><span class="nav-ico nav-ico--orange" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></span>Chia sẻ (99+)</a>
-        <a href="lien-he.html"><span class="nav-ico nav-ico--green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>Liên hệ</a>
-        <a href="nap-tien.html"><span class="nav-ico nav-ico--pink" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/><path d="M16 14h2"/></svg></span>Nạp tiền</a>
+        <a href="/tat-ca-san-pham"><span class="nav-ico nav-ico--red" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>Tất cả sản phẩm</a>
+        <a href="/chia-se"><span class="nav-ico nav-ico--orange" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></span>Chia sẻ (99+)</a>
+        <a href="/lien-he"><span class="nav-ico nav-ico--green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>Liên hệ</a>
+        <a href="/nap-tien"><span class="nav-ico nav-ico--pink" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/><path d="M16 14h2"/></svg></span>Nạp tiền</a>
       </nav>
       <div class="nav-actions">
-        <a class="icon-btn account-btn" href="tai-khoan.html" aria-label="Tài khoản">
+        <a class="icon-btn account-btn" href="/tai-khoan" aria-label="Tài khoản">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20c1.6-3.6 4.5-5.5 7.5-5.5s5.9 1.9 7.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         </a>
-        <a class="icon-btn wish-btn" href="wishlist.html" aria-label="Wishlist">
+        <a class="icon-btn wish-btn" href="/wishlist" aria-label="Wishlist">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.4-9.5-8.6C.7 8.8 2 5 5.6 4.2 8 3.6 10 4.7 12 7c2-2.3 4-3.4 6.4-2.8C22 5 23.3 8.8 21.5 12.4 19 16.6 12 21 12 21z"/></svg>
           <span class="nav-badge" id="wishBadgeTop">0</span>
         </a>
-        <a class="cart-btn" href="cart.html" aria-label="Giỏ hàng">
+        <a class="cart-btn" href="/cart" aria-label="Giỏ hàng">
           <span class="cart-icon-circle">
             <svg viewBox="0 0 24 24"><path d="M3 4h2l1.6 9.6a2 2 0 0 0 2 1.7h7.4a2 2 0 0 0 2-1.6L19.5 8H6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.4" fill="currentColor"/><circle cx="16.5" cy="19.5" r="1.4" fill="currentColor"/></svg>
             <span class="nav-badge" id="cartBadgeTop">0</span>
@@ -99,18 +109,18 @@
 <nav class="drawer" id="drawer">
   <div class="drawer-inner">
     <div class="drawer-title">Danh mục</div>
-    <a href="tat-ca-san-pham.html">Tất cả sản phẩm</a>
-    <a href="tat-ca-san-pham.html?cat=tai-khoan-cong-cu-ai">Tài khoản &amp; Công cụ AI</a>
-    <a href="tat-ca-san-pham.html?cat=game">Game</a>
-    <a href="tat-ca-san-pham.html?cat=khoa-hoc">Khóa học</a>
+    <a href="/tat-ca-san-pham">Tất cả sản phẩm</a>
+    <a href="/tat-ca-san-pham/tai-khoan-cong-cu-ai">Tài khoản &amp; Công cụ AI</a>
+    <a href="/tat-ca-san-pham/game">Game</a>
+    <a href="/tat-ca-san-pham/khoa-hoc">Khóa học</a>
     <a href="index.html#bestseller">Bán chạy</a>
     <a href="index.html#reviews">Đánh giá</a>
       
       <div class="drawer-title" style="margin-top:18px">Menu</div>
-    <a href="tat-ca-san-pham.html">Tất cả sản phẩm</a>
-    <a href="chia-se.html">Chia sẻ (99+)</a>
-    <a href="lien-he.html">Liên hệ</a>
-    <a href="nap-tien.html">Nạp tiền</a>
+    <a href="/tat-ca-san-pham">Tất cả sản phẩm</a>
+    <a href="/chia-se">Chia sẻ (99+)</a>
+    <a href="/lien-he">Liên hệ</a>
+    <a href="/nap-tien">Nạp tiền</a>
   </div>
 </nav>
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -118,8 +128,8 @@
 <main class="shop-page">
   <div class="container">
     <nav class="breadcrumb seller-crumb" aria-label="Breadcrumb">
-      <a href="index.html">Trang chủ</a><span class="sep">›</span>
-      <a href="tat-ca-san-pham.html">Sản phẩm</a><span class="sep">›</span>
+      <a href="/">Trang chủ</a><span class="sep">›</span>
+      <a href="/tat-ca-san-pham">Sản phẩm</a><span class="sep">›</span>
       <span class="current" id="shopCrumbName">Gian hàng</span>
     </nav>
 
@@ -127,7 +137,7 @@
       <h2>Không tìm thấy gian hàng</h2>
       <p class="wish-empty-desc">Token hoặc slug không hợp lệ. Vui lòng mở lại từ trang sản phẩm.</p>
       <div class="wish-empty-actions">
-        <a href="tat-ca-san-pham.html" class="btn btn-primary">Xem cửa hàng</a>
+        <a href="/tat-ca-san-pham" class="btn btn-primary">Xem cửa hàng</a>
       </div>
     </div>
 
@@ -205,7 +215,7 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col footer-col-brand">
-      <a href="index.html" class="logo footer-logo">
+      <a href="/" class="logo footer-logo">
         <img class="logo-img" src="images/logo-vuammo.png" alt="Vua MMO">
       </a>
       <p class="footer-desc">Vua MMO là nền tảng giao dịch sản phẩm số — tài khoản, phần mềm bản quyền chính hãng với giá thành tốt nhất.</p>
@@ -222,17 +232,17 @@
     </div>
     <div class="footer-col">
       <p class="footer-heading">Giới thiệu</p>
-      <a href="gioi-thieu.html">Về Vua MMO</a>
-      <a href="dieu-khoan-dich-vu.html">Điều khoản dịch vụ</a>
-      <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>
-      <a href="chinh-sach-cookies.html">Chính sách Cookies</a>
-      <a href="bao-hanh-va-hoan-tien.html">Bảo hành và hoàn tiền</a>
-      <a href="hinh-thuc-thanh-toan.html">Hình thức thanh toán</a>
-      <a href="huong-dan-mua-hang.html">Hướng dẫn mua hàng</a>
-      <a href="gdpr.html">GDPR</a>
-      <a href="dmca.html">DMCA</a>
-      <a href="tai-lieu-api.html">Tài liệu API</a>
-      <a href="faqs.html">FAQs</a>
+      <a href="/gioi-thieu">Về Vua MMO</a>
+      <a href="/dieu-khoan-dich-vu">Điều khoản dịch vụ</a>
+      <a href="/chinh-sach-bao-mat">Chính sách bảo mật</a>
+      <a href="/chinh-sach-cookies">Chính sách Cookies</a>
+      <a href="/bao-hanh-va-hoan-tien">Bảo hành và hoàn tiền</a>
+      <a href="/hinh-thuc-thanh-toan">Hình thức thanh toán</a>
+      <a href="/huong-dan-mua-hang">Hướng dẫn mua hàng</a>
+      <a href="/gdpr">GDPR</a>
+      <a href="/dmca">DMCA</a>
+      <a href="/tai-lieu-api">Tài liệu API</a>
+      <a href="/faqs">FAQs</a>
     </div>
     <div class="footer-col">
       <p class="footer-heading">Kênh liên hệ &amp; Hỗ trợ</p>
@@ -242,10 +252,10 @@
     </div>
     <div class="footer-col">
       <p class="footer-heading">Danh mục chính</p>
-      <a href="tat-ca-san-pham.html">Tất cả sản phẩm</a>
-      <a href="tat-ca-san-pham.html?cat=tai-khoan-cong-cu-ai">Tài khoản &amp; Công cụ AI</a>
-      <a href="tat-ca-san-pham.html?cat=game">Game</a>
-      <a href="tat-ca-san-pham.html?cat=khoa-hoc">Khóa học</a>
+      <a href="/tat-ca-san-pham">Tất cả sản phẩm</a>
+      <a href="/tat-ca-san-pham/tai-khoan-cong-cu-ai">Tài khoản &amp; Công cụ AI</a>
+      <a href="/tat-ca-san-pham/game">Game</a>
+      <a href="/tat-ca-san-pham/khoa-hoc">Khóa học</a>
     </div>
   </div>
   <div class="container footer-bottom">
@@ -281,17 +291,17 @@
 
 <!-- ===== STICKY MOBILE NAV ===== -->
 <nav class="bottom-nav">
-  <a class="bn-item" href="wishlist.html">
+  <a class="bn-item" href="/wishlist">
     <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.5-8.6C.7 8.8 2 5 5.6 4.2 8 3.6 10 4.7 12 7c2-2.3 4-3.4 6.4-2.8C22 5 23.3 8.8 21.5 12.4 19 16.6 12 21 12 21z" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
     <span class="bn-badge" id="wishBadge">0</span>
     <small>Wishlist</small>
   </a>
-  <a class="bn-item" href="cart.html">
+  <a class="bn-item" href="/cart">
     <svg viewBox="0 0 24 24"><path d="M3 4h2l1.6 9.6a2 2 0 0 0 2 1.7h7.4a2 2 0 0 0 2-1.6L19.5 8H6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.4" fill="currentColor"/><circle cx="16.5" cy="19.5" r="1.4" fill="currentColor"/></svg>
     <span class="bn-badge" id="cartBadge">0</span>
     <small>Giỏ hàng</small>
   </a>
-  <a class="bn-item" href="blog.html">
+  <a class="bn-item" href="/blog">
     <svg viewBox="0 0 24 24"><path d="M4 5h16v12H8l-4 4V5z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
     <small>Blog</small>
   </a>
@@ -299,18 +309,18 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="js/products-data.js?v=20260908slug"></script>
-<script src="js/catalog-runtime.js?v=20260908a"></script>
-<script src="js/shops-data.js?v=20260908slug"></script>
-<script src="js/chat-widget.js?v=20260907k"></script>
-<script src="js/cards.js?v=20260908slug"></script>
+<script src="js/products-data.js?v=20260908block"></script>
+<script src="js/catalog-runtime.js?v=20260908block"></script>
+<script src="js/shops-data.js?v=20260909avatar1"></script>
+<script src="js/chat-widget.js?v=20260909guest1"></script>
+<script src="js/cards.js?v=20260910shop1"></script>
 <script src="js/api-client.js?v=20260907c"></script>
 <script src="js/cart-store.js?v=20260907c"></script>
 <script src="js/wish-store.js?v=20260907c"></script>
-<script src="js/site-header.js?v=20260908acct"></script>
-<script src="js/auth.js?v=20260908avatar2"></script>
+<script src="js/site-header.js?v=20260909side8"></script>
+<script src="js/auth.js?v=20260909hdr2"></script>
 <script src="js/cart-page.js"></script>
-<script src="js/shop-page.js?v=20260908slug"></script>
+<script src="js/shop-page.js?v=20260910shop1"></script>
 <script src="js/layout.js?v=20260907f"></script>
 </body>
 </html>

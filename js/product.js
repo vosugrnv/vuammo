@@ -1,4 +1,4 @@
-/* Product detail — packages, description, FAQ, reviews, related, seller + SEO */
+﻿/* Product detail — packages, description, FAQ, reviews, related, seller + SEO */
 /* Danh mục: js/category-taxonomy.js + js/category-labels.js */
 
 function categoryInfo(p){
@@ -91,10 +91,24 @@ function sellerJoinText(s) {
 }
 function sellerAvatar(s) {
   if (typeof shopAvatarUrl === "function") return shopAvatarUrl(s);
-  return s.avatar || (s.slug ? ("images/shops/" + s.slug + ".svg") : "images/logo-vuammo.png");
+  const raw = s.avatar || (s.slug ? ("/images/shops/" + s.slug + ".svg") : "/images/logo-vuammo.png");
+  return typeof absAssetUrl === "function" ? absAssetUrl(raw) : raw;
 }
 
-const product = resolveProductFromLocation() || RAW_PRODUCTS[0];
+let product = typeof resolveProductFromLocation === "function" ? resolveProductFromLocation() : null;
+if (!product) {
+  try {
+    const ld = document.getElementById("productJsonLd");
+    if (ld && typeof productById === "function") {
+      const j = JSON.parse(ld.textContent || "{}");
+      if (j && j.sku) product = productById(j.sku);
+    }
+  } catch (_) {}
+}
+if (!product || (typeof isBlockedProduct === "function" && isBlockedProduct(product))) {
+  location.replace("/tat-ca-san-pham");
+  throw new Error("product not found");
+}
 const cat = categoryInfo(product);
 const seed = product.name.length * 137 + product.price;
 const seller = sellerFor(product);
@@ -202,20 +216,34 @@ function applySeo(){
     document.head.appendChild(bld);
   }
   const origin = (() => { try { return location.origin; } catch { return ""; } })();
-  const listingUrl = origin + "/tat-ca-san-pham.html";
+  const listingUrl = origin + "/tat-ca-san-pham";
+  const parentPath = typeof categoryListingPath === "function"
+    ? categoryListingPath(cat.parentSlug)
+    : listingUrl + "/" + cat.parentSlug;
+  const childPath = typeof categoryListingPath === "function"
+    ? categoryListingPath(cat.parentSlug, cat.slug)
+    : listingUrl + "/" + cat.parentSlug + "/" + cat.slug;
   bld.textContent = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Tất cả sản phẩm", item: listingUrl },
-      { "@type": "ListItem", position: 2, name: cat.parentLabel, item: listingUrl + "?cat=" + cat.parentSlug },
-      { "@type": "ListItem", position: 3, name: cat.label, item: listingUrl + "?cat=" + cat.slug },
+      { "@type": "ListItem", position: 2, name: cat.parentLabel, item: origin + parentPath },
+      { "@type": "ListItem", position: 3, name: cat.label, item: origin + childPath },
       { "@type": "ListItem", position: 4, name: product.name, item: absoluteUrl() }
     ]
   });
 
   if(location.protocol === "http:" || location.protocol === "https:"){
-    if(/product\.html$/i.test(location.pathname)){
+    const pathNow = String(location.pathname || "").replace(/\/+$/, "") || "/";
+    const needCanonical =
+      pathNow !== seoPath ||
+      !!location.search ||
+      /product\.html$/i.test(pathNow) ||
+      /\/vi\//i.test(pathNow) ||
+      /\.html$/i.test(pathNow) ||
+      /^\/product$/i.test(pathNow);
+    if(needCanonical){
       try { history.replaceState(null, "", seoPath); } catch(_){}
     }
   }
@@ -288,8 +316,8 @@ function faqItems(name){
   const shop = shopName;
   return [
     {
-      q: name + " của " + shop + " phục vụ ở khu vực nào?",
-      a: name + " do " + shop + " cung cấp và giao nhận hoàn toàn online trên toàn quốc. Shop đang hoạt động tại " + seller.city + " (khu vực " + seller.district + "). Bạn đặt mua trên trang sản phẩm và nhận thông tin tài khoản qua email trong 5–15 phút sau khi thanh toán thành công."
+      q: name + " của " + shop + " giao hàng như thế nào?",
+      a: name + " do " + shop + " cung cấp hoàn toàn online trên Vua MMO. Bạn đặt mua trên trang sản phẩm và nhận thông tin tài khoản qua hệ thống sau khi thanh toán thành công (thường trong vài phút)."
     },
     {
       q: "Giá " + name + " tại " + shop + " là bao nhiêu?",
@@ -504,9 +532,9 @@ function renderReviews(){
 applySeo();
 
 document.getElementById("breadcrumb").innerHTML =
-  '<a href="tat-ca-san-pham.html">Tất cả sản phẩm</a><span class="sep">›</span>' +
-  '<a href="tat-ca-san-pham.html?cat=' + encodeURIComponent(cat.parentSlug) + '">' + esc(cat.parentLabel) + '</a><span class="sep">›</span>' +
-  '<a href="tat-ca-san-pham.html?cat=' + encodeURIComponent(cat.slug) + '">' + esc(cat.label) + '</a><span class="sep">›</span>' +
+  '<a href="/tat-ca-san-pham">Tất cả sản phẩm</a><span class="sep">›</span>' +
+  '<a href="' + (typeof categoryListingPath === "function" ? categoryListingPath(cat.parentSlug) : ("/tat-ca-san-pham/" + cat.parentSlug)) + '">' + esc(cat.parentLabel) + '</a><span class="sep">›</span>' +
+  '<a href="' + (typeof categoryListingPath === "function" ? categoryListingPath(cat.parentSlug, cat.slug) : ("/tat-ca-san-pham/" + cat.parentSlug + "/" + cat.slug)) + '">' + esc(cat.label) + '</a><span class="sep">›</span>' +
   '<span class="current">' + esc(product.name) + '</span>';
 
 document.getElementById("prodImage").src = product.image;
@@ -531,6 +559,124 @@ document.getElementById("prodTitle").textContent = product.name;
 document.getElementById("prodStockLine").textContent = "";
 renderVariants();
 updatePrice();
+
+/** Sibling/related category tags → listing URLs (sample-style pink links above CTA). */
+function productCategoryNavTags(p, info){
+  const tags = [];
+  const seen = new Set();
+  const skipSlug = /^(tai-khoan-khac|tang-tuong-tac|uncategorized)$/i;
+  function add(title, href, isCurrent){
+    if(!title || !href || seen.has(href)) return;
+    seen.add(href);
+    tags.push({ title: String(title), href: String(href), current: !!isCurrent });
+  }
+  const listPath = typeof categoryListingPath === "function"
+    ? categoryListingPath
+    : function(parent, child){
+        return child ? "/tat-ca-san-pham/" + parent + "/" + child : "/tat-ca-san-pham/" + parent;
+      };
+  const leaf = typeof leafSlug === "function"
+    ? leafSlug
+    : function(_parent, title, preferred){
+        return preferred || (typeof slugify === "function" ? slugify(title) : String(title || "").toLowerCase());
+      };
+
+  if(info && info.parentSlug && info.slug){
+    add(info.label, listPath(info.parentSlug, info.slug), true);
+  }
+
+  const parents = (typeof CATEGORY_TAXONOMY !== "undefined" && CATEGORY_TAXONOMY.parents) || [];
+  const parentNode = parents.find(function(x){ return x.slug === (info && info.parentSlug); });
+  const children = (parentNode && parentNode.children) || [];
+  const idx = children.findIndex(function(c){
+    const cs = leaf(info.parentSlug, c.title, c.slug);
+    return cs === info.slug || c.slug === info.slug;
+  });
+
+  const popularByParent = {
+    "tai-khoan-cong-cu-ai": [
+      "capcut","canva","chatgpt","adobe","zoom","spotify","netflix","youtube",
+      "cursor","midjourney","figma","gemini","claude","expressvpn","tiktok",
+      "office","microsoft","grammarly","notion"
+    ],
+    "game": ["steam","discord","nitro-discord"],
+    "khoa-hoc": []
+  };
+  const popular = popularByParent[info.parentSlug] || [];
+
+  function childHref(c){
+    const cs = leaf(info.parentSlug, c.title, c.slug);
+    if(skipSlug.test(cs) || skipSlug.test(c.slug || "")) return null;
+    return { title: c.title, href: listPath(info.parentSlug, cs), slug: cs };
+  }
+
+  // Prefer curated related brands first (better UX than raw taxonomy neighbors)
+  popular.forEach(function(slug){
+    if(tags.length >= 10) return;
+    const c = children.find(function(ch){
+      return ch.slug === slug || leaf(info.parentSlug, ch.title, ch.slug) === slug;
+    });
+    if(!c) return;
+    const item = childHref(c);
+    if(item) add(item.title, item.href, false);
+  });
+
+  for(let d = 1; tags.length < 10 && d < 40; d++){
+    [idx - d, idx + d].forEach(function(j){
+      if(j < 0 || j >= children.length || tags.length >= 10) return;
+      const item = childHref(children[j]);
+      if(item) add(item.title, item.href, false);
+    });
+  }
+
+  if(tags.length < 8){
+    children.forEach(function(c){
+      if(tags.length >= 10) return;
+      const item = childHref(c);
+      if(item) add(item.title, item.href, false);
+    });
+  }
+
+  // Cross-parent discovery when still thin (e.g. game/khoa-hoc with few siblings)
+  if(tags.length < 6){
+    const extras = [
+      { title: "Capcut", href: "/tat-ca-san-pham/tai-khoan-cong-cu-ai/capcut" },
+      { title: "Canva", href: "/tat-ca-san-pham/tai-khoan-cong-cu-ai/canva" },
+      { title: "ChatGPT", href: "/tat-ca-san-pham/tai-khoan-cong-cu-ai/chatgpt" },
+      { title: "Netflix", href: "/tat-ca-san-pham/tai-khoan-cong-cu-ai/netflix" },
+      { title: "Spotify", href: "/tat-ca-san-pham/tai-khoan-cong-cu-ai/spotify" },
+      { title: "Zoom", href: "/tat-ca-san-pham/tai-khoan-cong-cu-ai/zoom" },
+      { title: "Adobe", href: "/tat-ca-san-pham/tai-khoan-cong-cu-ai/adobe" },
+      { title: "Game", href: "/tat-ca-san-pham/game" },
+      { title: "Khóa học", href: "/tat-ca-san-pham/khoa-hoc" }
+    ];
+    extras.forEach(function(t){
+      if(tags.length >= 10) return;
+      add(t.title, t.href, false);
+    });
+  }
+
+  return tags.slice(0, 10);
+}
+
+(function renderProductNavTags(){
+  const buyRow = document.querySelector(".product-buy-row");
+  if(!buyRow) return;
+  const tags = productCategoryNavTags(product, cat);
+  if(!tags.length) return;
+  const nav = document.createElement("nav");
+  nav.className = "product-nav-tags-wrap";
+  nav.setAttribute("aria-label", "Danh mục liên quan");
+  nav.innerHTML =
+    '<ul class="product-nav-tags">' +
+    tags.map(function(t){
+      return '<li><a href="' + esc(t.href) + '"' +
+        (t.current ? ' class="is-current" aria-current="page"' : "") +
+        ">" + esc(t.title) + "</a></li>";
+    }).join("") +
+    "</ul>";
+  buyRow.parentNode.insertBefore(nav, buyRow);
+})();
 
 function pad(n){ return String(n).padStart(2, "0"); }
 function tick(){
@@ -576,7 +722,7 @@ document.getElementById("addToCartBtn").addEventListener("click", () => {
 });
 document.getElementById("buyNowBtn").addEventListener("click", () => {
   if (typeof addToCart === "function") addToCart(currentCartItem());
-  location.href = "thanh-toan.html";
+  location.href = "/thanh-toan";
 });
 
 (function wireProductWish() {
@@ -632,12 +778,12 @@ document.getElementById("prodFaq").innerHTML =
 renderReviews();
 mergeVerifiedReviews();
 
-const related = RAW_PRODUCTS
-  .filter(function(p){ return p !== product && (p.cats || []).some(function(c){ return (product.cats || []).includes(c); }); })
-  .slice(0, 5);
+const related = shuffleArray(
+  RAW_PRODUCTS.filter(function(p){ return p !== product && (p.cats || []).some(function(c){ return (product.cats || []).includes(c); }); })
+).slice(0, 5);
 document.getElementById("relatedGrid").className = "card-grid product-related-grid";
 document.getElementById("relatedGrid").innerHTML =
-  (related.length ? related : RAW_PRODUCTS.filter(function(p){ return p !== product; }).slice(0, 5))
+  (related.length ? related : shuffleArray(RAW_PRODUCTS.filter(function(p){ return p !== product; })).slice(0, 5))
     .map(productCard).join("");
 
 (function(){
@@ -647,10 +793,13 @@ document.getElementById("relatedGrid").innerHTML =
   const level = sellerLevel(seller);
   const success = sellerSuccessRate(seller);
   const joined = sellerJoinText(seller);
-  const cityLine = [seller.city, seller.district].filter(Boolean).join(" · ");
+  const cats = (product.cats || []).filter(Boolean).slice(0, 2);
   const nameHtml = href
     ? ('<a href="' + esc(href) + '"><strong>' + esc(shopName) + "</strong></a>")
     : ("<strong>" + esc(shopName) + "</strong>");
+  const introFocus = cats.length
+    ? ("Chuyên " + cats.join(", ").toLowerCase() + " và các sản phẩm số liên quan")
+    : "Chuyên tài khoản, phần mềm và công cụ số";
 
   const chatAttrs =
     ' data-shop-token="' + esc(seller.token || "") + '"' +
@@ -679,9 +828,7 @@ document.getElementById("relatedGrid").innerHTML =
     '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M12 2l7 3v6c0 5-3.4 8.4-7 10-3.6-1.6-7-5-7-10V5l7-3zm-1.1 13.2l5.6-5.6-1.4-1.4-4.2 4.2-2-2-1.4 1.4 3.4 3.4z"/></svg>' +
     "Đã xác minh</span>" +
     "</div>" +
-    '<div class="product-seller-bar-meta">Tham gia ' + esc(joined) +
-    (cityLine ? " · " + esc(cityLine) : "") +
-    "</div>" +
+    '<div class="product-seller-bar-meta">Tham gia ' + esc(joined) + " · Giao dịch online</div>" +
     "</div></div>" +
     '<div class="product-seller-bar-actions">' +
     '<a href="#" class="product-seller-bar-btn product-seller-bar-btn-chat js-open-shop-chat"' + chatAttrs + ' title="Chat với ' + esc(shopName) + '">' +
@@ -708,14 +855,13 @@ document.getElementById("relatedGrid").innerHTML =
     '<div class="product-seller-head">' +
     '<img class="product-seller-avatar" src="' + esc(avatar) + '" alt="' + esc(shopName) + '">' +
     "<div><h2>Giới thiệu " + esc(shopName) + "</h2>" +
-    '<p class="product-seller-sub">Gian hàng trên Vua MMO · ' + esc(seller.city || "") +
-    ' · <span class="product-seller-verified-inline">Giao dịch đã xác minh</span></p></div></div>' +
-    "<p>" + nameHtml + " tại " + esc(seller.city || "") +
-    (seller.district ? " (khu vực " + esc(seller.district) + ")" : "") +
-    " đang bán <strong>" + esc(product.name) + "</strong> trên sàn Vua MMO — giao nhanh, bảo hành rõ ràng.</p>" +
+    '<p class="product-seller-sub">Gian hàng trên Vua MMO · <span class="product-seller-verified-inline">Giao dịch đã xác minh</span></p></div></div>' +
+    "<p>" + nameHtml + " " + esc(introFocus) +
+    ". Đang bán <strong>" + esc(product.name) +
+    "</strong> — giao tự động, bảo hành rõ ràng, hỗ trợ nhanh trên sàn.</p>" +
     '<div class="product-shop-actions">' +
     (href ? '<a class="btn btn-outline" href="' + esc(href) + '">Xem shop</a>' : "") +
-    '<a class="btn btn-primary js-open-shop-chat" href="#"' + chatAttrs + ">Chat</a>" +
-    '<a class="btn btn-outline js-open-chat" href="#">Chat với Vua MMO</a>' +
+    '<a class="btn btn-primary js-open-shop-chat" href="#"' + chatAttrs + ">Chat shop</a>" +
+    '<a class="btn btn-outline js-open-chat" href="#">Chat sàn</a>' +
     "</div>";
 })();
